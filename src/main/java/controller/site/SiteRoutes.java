@@ -28,9 +28,6 @@ public class SiteRoutes extends BaseRoutes {
         initRoutes();
         get(ROOT, (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
-            List<Groups> listGroups = Factory.getInstance().getGenericRepositoryInterface(Groups.class).getAllObjects();
-            model.put("groups", new String());
-            model.put("groupsList", listGroups);
             return new ModelAndView(model, "/public/index.html");
         }, new VelocityTemplateEngine());
 

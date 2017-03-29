@@ -3,10 +3,18 @@ package controller.site.api;
 import controller.BaseRoutes;
 import dao.Factory;
 import model.Users;
+import spark.utils.IOUtils;
+import utils.FileWorker;
+import utils.StreamUtil;
 
+import javax.servlet.MultipartConfigElement;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.io.InputStream;
+
+import static java.lang.System.*;
 import static spark.Spark.post;
 
 public class UsersApi extends BaseRoutes {
@@ -36,5 +44,21 @@ public class UsersApi extends BaseRoutes {
                 return e;
             }
         });
+
+        post(ROOT + "getfile", (request, response) -> {
+
+            request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
+            try (InputStream is = request.raw().getPart("upload").getInputStream()) {
+                // Use the input stream to create a file
+
+                File file = StreamUtil.stream2file(is);
+                String strFromFile = FileWorker.read(file);
+                log.log(Level.SEVERE, strFromFile);
+            }
+
+            return "File uploaded";
+        });
+
+
     }
 }
