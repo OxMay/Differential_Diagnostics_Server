@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="mdl/material.min.css">
+        <link rel="stylesheet" href="style/style.css">
+        <script defer src="mdl/material.min.js"></script>
+        
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        
+        <meta charset="UTF-8">
+        <style>
+           .axis--x path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+            <header class="mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--grey-600">
+                <div class="mdl-layout__header-row">
+                    <span id="header_title" class="mdl-layout-title">Административная панель</span>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl mdl-color-text--blue-grey-50">
+                <nav class="mdl-navigation mdl-color--blue-grey-800">
+                     <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="index.html">Главная</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics.html">Сравнение по режимам</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics2.html">Cравнение по разведениям</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="Primer.html">Пример Байеса</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="baies.html">Рассчет метода Байеса</a>
+                </nav>
+                <main class="mdl-layout__content mdl-color--grey-100">
+                    <div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--1-col">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+              <main class="mdl-layout__content">
+                    <div>
+                        <div>
+                            <div class="mdl-cell--1-col">
+                                <svg width="500" height="300"></svg>
+                                 <script src="js/downloadGraphics.js"></script> 
+                            </div>
+                        </div>
+                    </div>
+                </main>
+          
+       
+    </body>
+</html>

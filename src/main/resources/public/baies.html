@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="mdl/material.min.css">
+        <link rel="stylesheet" href="style/style.css">
+        <script defer src="mdl/material.min.js"></script>
+        <meta charset="UTF-8">
+        <style>
+            .thumbnails{
+                /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
+                margin: -3em 0 0 -2em;
+                /* Выравнивание по центру */
+                text-align: center;
+            }
+            .thumbnail{
+                /* Убираем подчеркивание у элемента ins,который был использован для совместимости со старыми версиями Internet Explorer */
+                text-decoration: none;
+                /* Следующее правило для Firefox 2 */
+                display: -moz-inline-box;
+                /* а это для остальных */
+                display: inline-block;
+                vertical-align: top;
+                /* Убираем выравнивание по центру */
+                text-align: left;
+                /* Отступы между блоками */
+                margin: 3em 0 0 2em;
+            }
+            .demo-card-event.mdl-card {
+                width: 350px;
+                min-height: inherit;
+                background: #2F4F4F;
+                margin-bottom: inherit;
+            }
+            .demo-card-event > .mdl-card__title {
+                align-content: center;
+            }
+            .demo-card-event > .mdl-card__title > h6 {
+                margin-top: 0;
+                margin-bottom: inherit;
+                min-height: inherit;
+            }
+            .demo-card-event > .mdl-card__title,
+            .demo-card-event > .mdl-card__actions > .mdl-button {
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+            <header class="mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--grey-600">
+                <div class="mdl-layout__header-row">
+                    <span id="header_title" class="mdl-layout-title">Административная панель</span>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl mdl-color-text--blue-grey-50">
+                <nav class="mdl-navigation mdl-color--blue-grey-800">
+                     <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="index.html">Главная</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics.html">Сравнение по режимам</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics2.html">Cравнение по разведениям</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="Primer.html">Пример Байеса</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="baies.html">Рассчет метода Байеса</a>
+                </nav>
+                <main class="mdl-layout__content mdl-color--grey-100">
+                    <div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--1-col">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <main class="mdl-layout__content mdl-color--grey-100" align="center">
+                <div >
+                    <div class="thumbnails">
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Активность электрохимических реакций(А1)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input class="mdl-textfield__input" type="text" name="discipline_name">
+                                                    <label class="mdl-textfield__label">Введите значение</label>
+                                                </div>
+                                                
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ins>
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Сопротивление электрохимической реакции(А2)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input class="mdl-textfield__input" type="text" name="discipline_name">
+                                                    <label class="mdl-textfield__label">Введите значение</label>
+                                                </div>
+                                                
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ins>
+                    </div><br>
+                    <div class="thumbnails">
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Ёмкость двойного электрического слоя(А3)</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr >
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input class="mdl-textfield__input" type="text" name="discipline_name">
+                                                    <label class="mdl-textfield__label">Введите значение</label>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                        </ins>
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Межэлектродное сопротивление(А4)</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr >
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input class="mdl-textfield__input" type="text" name="discipline_name">
+                                                    <label class="mdl-textfield__label">Введите значение</label>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                        </ins>
+                    </div><br>
+                    <div class="thumbnails">
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Биохимические показатели</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr >
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input class="mdl-textfield__input" type="text" name="discipline_name">
+                                                    <label class="mdl-textfield__label">Введите значение</label>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                        </ins>
+                        <ins class="thumbnail">
+                            <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                                <div class="mdl-card__title mdl-card--expand">
+                                    <h6 align="justify">
+                                        Убедитесь, что все значения введены верно. Если вы готовы продолжить работу, нажмите кнопку "Диагноз пациента"
+                                    </h6>
+                                </div> 
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" font-size="10px">
+                                         Диагноз пациента
+                                    </a>
+                                    <div class="mdl-layout-spacer"></div>
+                                </div>
+                            </div>
+                        </ins>
+                    </div>
+                </div>
+            </main>
+    </body>
+</html>

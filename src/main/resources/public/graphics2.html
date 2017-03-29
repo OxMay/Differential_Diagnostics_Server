@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="mdl/material.min.css">
+        <link rel="stylesheet" href="style/style.css">
+        <script defer src="mdl/material.min.js"></script>
+        <meta charset="UTF-8">
+        <style>
+            .thumbnails{
+                /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
+                margin: -3em 0 0 -2em;
+                /* Выравнивание по центру */
+                text-align: center;
+            }
+            .thumbnail{/* Убираем подчеркивание у элемента ins,который был использован для совместимости со старыми версиями Internet Explorer */
+                text-decoration: none;
+                /* Следующее правило для Firefox 2 */
+                display: -moz-inline-box;
+                /* а это для остальных */
+                display: inline-block;
+                vertical-align: top;
+                /* Убираем выравнивание по центру */
+                text-align: left;
+                /* Отступы между блоками */
+                margin: 3em 0 0 2em;
+            }
+            .photo {
+                display: inline-block; /* Строчно-блочный элемент */
+                position: relative; /* Относительное позиционирование */
+            }
+            .photo:hover::after {
+                content: attr(data-title); /* Выводим текст */
+                position: absolute; /* Абсолютное позиционирование */
+                left: 0; right: 0; bottom: 5px; /* Положение подсказки */
+                z-index: 1; /* Отображаем подсказку поверх других элементов */
+                background: rgba(0,42,167,0.6); /* Полупрозрачный цвет фона */
+                color: #fff; /* Цвет текста */
+                text-align: center; /* Выравнивание текста по центру */
+                font-family: Arial, sans-serif; /* Гарнитура шрифта */
+                font-size: 11px; /* Размер текста подсказки */
+                padding: 5px 10px; /* Поля */
+                border: 1px solid #333; /* Параметры рамки */
+            }
+                 #table{
+            background-color: #80CBC4;
+              text-align-last: center;
+        }
+               #table1{
+                background-color: #4DB6AC;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+            <header class="mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--grey-600">
+                <div class="mdl-layout__header-row">
+                    <span id="header_title" class="mdl-layout-title">Административная панель</span>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl mdl-color-text--blue-grey-50">
+                <nav class="mdl-navigation mdl-color--blue-grey-800">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="index.html">Главная</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics.html">Сравнение по режимам</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics2.html">Cравнение по разведениям</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="Primer.html">Пример Байеса</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="baies.html">Рассчет метода Байеса</a>
+                </nav>
+                <main class="mdl-layout__content mdl-color--grey-100">
+                    <div class="page-content">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--1-col">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <main class="mdl-layout__content mdl-color--grey-100"  align="center" >
+                <div class="mdl-layout__content">
+                    <h6 align="center">Сравнение показаний работы при разных разведениях</h6>
+                    <div class="thumbnails">
+                        <ins class="thumbnail">
+                            <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp"  id="table">
+                                <thead id="table1">
+                                <tr>
+                                    <th colspan="6">Внутрипротоковые кисты</th>
+                                    <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Пациент</th>
+                                    <th>1:1</th>
+                                    <th>1:2</th>
+                                    <th>2:1</th> 
+                                    <th>3:1</th>
+                                    <th>Без разведения</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Пивцов</td>
+                                    <td>5</td>
+                                    <td>13/5</td>
+                                    <td></td>
+                                    <td>17.4</td>
+                                    <td>30.8</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Пациент 2</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Пациент 3</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Пациент 4</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Пациент 5</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ins>
+                    <ins class="thumbnail">
+                        <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp"  id="table">
+                                <thead id="table1">
+                                <tr>
+                                    <th colspan="6">Внепротоковые кисты</th>
+                                    <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Пациент</th>
+                                    <th>1:1</th>
+                                    <th>1:2</th>
+                                    <th>2:1</th> 
+                                    <th>3:1</th>
+                                    <th>Без разведения</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Антипова</td>
+                                    <td>21.25</td>
+                                    <td>8</td>
+                                    <td>28.5</td>
+                                   <td>2.275</td>
+                                    <td>5.25</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Корезина</td>
+                                    <td>11.25</td>
+                                    <td>5.625</td>
+                                    <td>1.8</td>
+                                   <td>6.6</td>
+                                    <td>8.28</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Нечаев</td>
+                                    <td></td>
+                                    <td>1.5</td>
+                                    <td>1.5</td>
+                                    <td>1</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Одиноков</td>
+                                    <td></td>
+                                    <td>2</td>
+                                    <td>2.45</td>
+                                    <td>12.7</td>
+                                    <td>1.5</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Смирнов</td>
+                                    <td>6.875</td>
+                                    <td>6</td>
+                                    <td>6.25</td>
+                                   <td>3</td>
+                                    <td>6.6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ins>
+                        
+                </div>
+                    <br>
+                    <main >
+                    <div align="center">
+                     <div class="photo" data-title="Нажмите на график для продолжения просмотра"><img src="image/onepacient.jpg" id="img" onClick="chg(img)"></div>
+                        </div>
+                   
+                       </main>
+
+                 
+            </div>
+        </main>
+            <script src="js/pr.js"></script>
+    </body>
+</html>
