@@ -6,6 +6,7 @@ import model.Users;
 import spark.utils.IOUtils;
 import utils.FileWorker;
 import utils.StreamUtil;
+import utils.parseString;
 
 import javax.servlet.MultipartConfigElement;
 import java.io.*;
@@ -53,10 +54,21 @@ public class UsersApi extends BaseRoutes {
 
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
-                log.log(Level.SEVERE, strFromFile);
+//                String db=strFromFile.replaceAll(System.getProperty("line.separator"),"    ");
+//                log.log(Level.SEVERE, db);
+                String[] db2 = strFromFile.split("(   |\n)");
+//                int len = ((db2.length)/3)-1;
+                                for(int i=0;i<db2.length;i++) {
+
+                                    log.log(Level.SEVERE, db2[i]);
+                }
+                return "File uploaded";
+            }
+            catch (Exception e) {
+                log.log(Level.SEVERE, "Exception: ", e);
+                return e;
             }
 
-            return "File uploaded";
         });
 
 
