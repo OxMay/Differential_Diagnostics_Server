@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import java.io.InputStream;
 
 import static java.lang.System.*;
+import static java.util.logging.Level.*;
 import static spark.Spark.post;
 
 public class UsersApi extends BaseRoutes {
@@ -41,7 +42,7 @@ public class UsersApi extends BaseRoutes {
                     return responseV;
                 }
             } catch (Exception e) {
-                log.log(Level.SEVERE, "Exception: ", e);
+                log.log(SEVERE, "Exception: ", e);
                 return e;
             }
         });
@@ -54,18 +55,41 @@ public class UsersApi extends BaseRoutes {
 
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
-//                String db=strFromFile.replaceAll(System.getProperty("line.separator"),"    ");
-//                log.log(Level.SEVERE, db);
-                String[] db2 = strFromFile.split("(   |\n)");
-//                int len = ((db2.length)/3)-1;
-                                for(int i=0;i<db2.length;i++) {
+                String rep = strFromFile.replace(",",".");
 
-                                    log.log(Level.SEVERE, db2[i]);
+                String[] db = rep.split("(   |\n)");
+
+                int len = ((db.length)/3)-1;
+                String [] mas= new String [db.length];
+                int k=0;
+                for(int i=3;i<mas.length;i++) {
+
+
+                    if (db[i].length() < 18) {
+                        mas[k] = db[i];
+                        k++;
+                    }
+
                 }
+
+                Double [] mas2= new Double[db.length];
+                int j=0;
+                for(int i=0;i<mas.length;i++){
+                    if(mas[i]!=null){
+                        mas2[i] = Double.parseDouble(mas[i]);
+                        j++;
+                    }
+
+
+                    System.out.println(mas2[i]);
+                }
+
+
+
                 return "File uploaded";
             }
             catch (Exception e) {
-                log.log(Level.SEVERE, "Exception: ", e);
+                log.log(SEVERE, "Exception: ", e);
                 return e;
             }
 
