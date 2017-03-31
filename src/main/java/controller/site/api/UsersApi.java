@@ -54,16 +54,18 @@ public class UsersApi extends BaseRoutes {
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
                Double[][] massive = parseString.read(strFromFile);
-                int max_index = (int) maximum.max(massive);
-                double firstPoint = massive[max_index][1];
-                double secondPoint = massive[max_index][0];
-                int start_index = (int) start.start(massive);
-                double thirdPoint = massive[start_index][1];
-                double fourthPoint =massive[start_index][0];
-                double nullPoint = massive[0][1];
-                System.out.println("Max_V : " + firstPoint + "  Max_T : " + secondPoint);
-                System.out.println("Start_V : " + thirdPoint + "  Start_T : " + fourthPoint);
-                System.out.println("null_V : " + nullPoint);
+//                int max_index = (int) maximum.max(massive);
+//                double firstPoint = massive[max_index][1];
+//                double secondPoint = massive[max_index][0];
+//                int start_index = (int) start.start(massive);
+//                double thirdPoint = massive[start_index][1];
+//                double fourthPoint =massive[start_index][0];
+//                double nullPoint = massive[0][1];
+//                System.out.println("Max_V : " + firstPoint + "  Max_T : " + secondPoint);
+//                System.out.println("Start_V : " + thirdPoint + "  Start_T : " + fourthPoint);
+//                System.out.println("null_V : " + nullPoint);
+                double A2 = calculationA2.calcA2(massive);
+                System.out.println(A2);
 
 
 
