@@ -4,9 +4,7 @@ import controller.BaseRoutes;
 import dao.Factory;
 import model.Users;
 import spark.utils.IOUtils;
-import utils.FileWorker;
-import utils.StreamUtil;
-import utils.parseString;
+import utils.*;
 
 import javax.servlet.MultipartConfigElement;
 import java.io.*;
@@ -55,34 +53,17 @@ public class UsersApi extends BaseRoutes {
 
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
-                String rep = strFromFile.replace(",",".");
-
-                String[] db = rep.split("(   |\n)");
-
-                int len = ((db.length)/3)-1;
-                String [] mas= new String [db.length];
-                int k=0;
-                for(int i=3;i<mas.length;i++) {
-
-
-                    if (db[i].length() < 18) {
-                        mas[k] = db[i];
-                        k++;
-                    }
-
-                }
-
-                Double [] mas2= new Double[db.length];
-                int j=0;
-                for(int i=0;i<mas.length;i++){
-                    if(mas[i]!=null){
-                        mas2[i] = Double.parseDouble(mas[i]);
-                        j++;
-                    }
-
-
-                    System.out.println(mas2[i]);
-                }
+               Double[][] massive = parseString.read(strFromFile);
+                int max_index = (int) maximum.max(massive);
+                double firstPoint = massive[max_index][1];
+                double secondPoint = massive[max_index][0];
+                int start_index = (int) start.start(massive);
+                double thirdPoint = massive[start_index][1];
+                double fourthPoint =massive[start_index][0];
+                double nullPoint = massive[0][1];
+                System.out.println("Max_V : " + firstPoint + "  Max_T : " + secondPoint);
+                System.out.println("Start_V : " + thirdPoint + "  Start_T : " + fourthPoint);
+                System.out.println("null_V : " + nullPoint);
 
 
 
