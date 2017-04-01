@@ -12,7 +12,7 @@ public class calculationA1 {
         double one = (((3*array[max_index][1])-3*array[start_index][1])/2);
         double two = (array[max_index][0]-array[start_index][0]);
         double A1 = (one*two*0.01)/2;
-return A1;
+        return A1;
     }
 
 
