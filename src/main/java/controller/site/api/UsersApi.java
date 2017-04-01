@@ -64,7 +64,7 @@ public class UsersApi extends BaseRoutes {
 //                System.out.println("Max_V : " + firstPoint + "  Max_T : " + secondPoint);
 //                System.out.println("Start_V : " + thirdPoint + "  Start_T : " + fourthPoint);
 //                System.out.println("null_V : " + nullPoint);
-                double A2 = calculationA2.calcA2(massive);
+                double A2 = calculationA4.calcA4(massive);
                 System.out.println(A2);
 
 
