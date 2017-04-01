@@ -39,7 +39,16 @@ public class SiteRoutes extends BaseRoutes {
 
         get(ROOT+"getresult", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
-            model.put("name"," A1");
+
+           Double as1 =  request.session().attribute("one");
+            Double as2 =  request.session().attribute("two");
+            Double as3 =  request.session().attribute("three");
+            Double as4 =  request.session().attribute("four");
+
+            model.put("A1", as1);
+            model.put("A2", as2);
+            model.put("A3", as3);
+            model.put("A4", as4);
 
             return new ModelAndView(model, "/public/baies.html");
         }, new VelocityTemplateEngine());
@@ -68,12 +77,17 @@ public class SiteRoutes extends BaseRoutes {
                 double A3 = calculationA3.calcA3(massive);
                 double A4 = calculationA4.calcA4(massive);
 
-                model.put("A1", A1);
-                model.put("A2", A2);
-                model.put("A3", A3);
-                model.put("A4", A4);
+                request.session().attribute("one", A1);
+                request.session().attribute("two", A2);
+                request.session().attribute("three", A3);
+                request.session().attribute("four", A4);
 
-                return new ModelAndView(model, "/public/baies.html");
+//                model.put("A1", A1);
+//                model.put("A2", A2);
+//                model.put("A3", A3);
+//                model.put("A4", A4);
+
+                return new ModelAndView(model, "/public/dataDownload.html");
             }
 //            catch (Exception e) {
 //                log.log(SEVERE, "Exception: ", e);
@@ -81,6 +95,7 @@ public class SiteRoutes extends BaseRoutes {
 //            }
 
         }, new VelocityTemplateEngine());
+
 
 
     }
