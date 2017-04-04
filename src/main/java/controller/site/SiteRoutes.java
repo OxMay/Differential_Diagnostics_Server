@@ -1,5 +1,6 @@
 package controller.site;
 
+import com.google.gson.Gson;
 import com.sun.org.apache.xerces.internal.xs.StringList;
 import controller.BaseRoutes;
 import controller.site.api.UsersApi;
@@ -62,31 +63,19 @@ public class SiteRoutes extends BaseRoutes {
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
                 Double[][] massive = parseString.read(strFromFile);
-//                int max_index = (int) maximum.max(massive);
-//                double firstPoint = massive[max_index][1];
-//                double secondPoint = massive[max_index][0];
-//                int start_index = (int) start.start(massive);
-//                double thirdPoint = massive[start_index][1];
-//                double fourthPoint =massive[start_index][0];
-//                double nullPoint = massive[0][1];
-//                System.out.println("Max_V : " + firstPoint + "  Max_T : " + secondPoint);
-//                System.out.println("Start_V : " + thirdPoint + "  Start_T : " + fourthPoint);
-//                System.out.println("null_V : " + nullPoint);
                 double A2 = calculationA2.calcA2(massive);
                 double A1 = calculationA1.calcA1(massive);
                 double A3 = calculationA3.calcA3(massive);
                 double A4 = calculationA4.calcA4(massive);
+                Gson gson = new Gson();
+
+                String json = gson.toJson(massive);
+                model.put("mas",json);
 
                 request.session().attribute("one", A1);
                 request.session().attribute("two", A2);
                 request.session().attribute("three", A3);
                 request.session().attribute("four", A4);
-
-//                model.put("A1", A1);
-//                model.put("A2", A2);
-//                model.put("A3", A3);
-//                model.put("A4", A4);
-
                 return new ModelAndView(model, "/public/dataDownload.html");
             }
 //            catch (Exception e) {

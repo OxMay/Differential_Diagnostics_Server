@@ -19,11 +19,11 @@ public class Application {
         port(5555);
 //        port = Integer.parseInt(args[0]);
 //        port(port);
-        try {
-            Factory.getInstance().getUsersDAO().addUser(new Users("admin", null, "admin", "root", false));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Factory.getInstance().getUsersDAO().addUser(new Users("admin", null, "admin", "root", false));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         new MobileRoutes();
         new SiteRoutes();
         new AdministrationRoutes();

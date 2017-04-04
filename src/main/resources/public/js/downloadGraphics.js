@@ -16,7 +16,7 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-d3.tsv("data.tsv", function(d) {
+d3.json("mas", function(d) {
   d.date = +d.date;
   d.close = +d.close;
   return d;
