@@ -3,6 +3,7 @@ package model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.DoubleSummaryStatistics;
 import java.util.UUID;
 
 @Entity
@@ -20,18 +21,18 @@ public class tableWork {
         private String pacient;
 
         @Column(name = "A1", nullable = false)
-        private String A1;
+        private Double A1;
 
         @Column(name = "A2", nullable = false)
-        private String A2;
+        private Double A2;
 
         @Column(name = "A3", nullable = false)
-        private String A3;
+        private Double A3;
 
         @Column(name = "A4", nullable = true)
-        private Boolean A4;
+        private Double A4;
 
-    public tableWork(String pacient, String A1, String A2, String A3, Boolean A4) {
+    public tableWork(String pacient, Double A1, Double A2, Double A3, Double A4) {
         this.pacient = pacient;
         this.A1 = A1;
         this.A2 = A2;
