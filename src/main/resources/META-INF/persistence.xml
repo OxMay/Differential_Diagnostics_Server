@@ -6,7 +6,7 @@
     <persistence-unit name="d4nm03ep7uplmc" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>model.falseCyst</class>
-        <class>model.trueCyst</class>
+        <class>model.TrueCyst</class>
         <class>model.Users</class>
         <class>model.Groups</class>
         <class>model.Schedule</class>
