@@ -76,6 +76,13 @@ public class SiteRoutes extends BaseRoutes {
                 request.session().attribute("two", A2);
                 request.session().attribute("three", A3);
                 request.session().attribute("four", A4);
+                int [][] result = modelA1.modelA1();
+                for(int i = 0; i<2;i++){
+                    for (int j=0;j<result.length;i++){
+                        System.out.println(result[i][j]);
+                    }
+
+                }
                 return new ModelAndView(model, "/public/dataDownload.html");
             }
 //            catch (Exception e) {
