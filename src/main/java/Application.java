@@ -65,7 +65,7 @@ public class Application {
         double border4 = (sumA4 + sumA4t)/size;
         System.out.println(border4);
         //Полчение работы по таблице с ложными кистами
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Double> list = new ArrayList<Double>();
         int countA1if = 0;
         int countA1else = 0;
         int countA2if = 0;
@@ -97,16 +97,16 @@ public class Application {
             }
         }
 
-        list.add(0, countA1if);
-        list.add(1, countA1else);
-        list.add(2, countA2if);
-        list.add(3, countA2else);
-        list.add(4, countA3if);
-        list.add(5, countA3else);
-        list.add(6, countA4if);
-        list.add(7, countA4else);
+        list.add(0, (double) countA1if/size1);
+        list.add(1, (double) countA1else/size1);
+        list.add(2, (double) countA2if/size1);
+        list.add(3, (double) countA2else/size1);
+        list.add(4, (double) countA3if/size1);
+        list.add(5, (double) countA3else/size1);
+        list.add(6, (double) countA4if/size1);
+        list.add(7, (double) countA4else/size1);
         //Получение работы по таблице с истинными кистами
-        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        ArrayList<Double> list1 = new ArrayList<Double>();
         int scoreA1if = 0;
         int scoreA1else = 0;
         int scoreA2if = 0;
@@ -138,19 +138,17 @@ public class Application {
             }
 
         }
-        list1.add(0,scoreA1if);
-        list1.add(1,scoreA1else);
-        list1.add(2,scoreA2if);
-        list1.add(3,scoreA2else);
-        list1.add(4,scoreA3if);
-        list1.add(5,scoreA3else);
-        list1.add(6,scoreA4if);
-        list1.add(7,scoreA4else);
-//        for(Integer f:list){
-//            System.out.println(f);
-//        }
-        float k = 1/5f;
-        System.out.println(k);
+        list1.add(0, (double) scoreA1if/size2);
+        list1.add(1, (double) scoreA1else/size2);
+        list1.add(2, (double) scoreA2if/size2);
+        list1.add(3, (double) scoreA2else/size2);
+        list1.add(4, (double) scoreA3if/size2);
+        list1.add(5, (double) scoreA3else/size2);
+        list1.add(6, (double) scoreA4if/size2);
+        list1.add(7, (double) scoreA4else/size2);
+        for(Double f:list1){
+            System.out.println(f);
+        }
         new MobileRoutes();
         new SiteRoutes();
         new AdministrationRoutes();
