@@ -63,7 +63,6 @@ public class Application {
         double border2 = (sumA2 + sumA2t)/size;
         double border3 = (sumA3 + sumA3t)/size;
         double border4 = (sumA4 + sumA4t)/size;
-        System.out.println(border4);
         //Полчение работы по таблице с ложными кистами
         ArrayList<Double> list = new ArrayList<Double>();
         int countA1if = 0;
@@ -105,6 +104,7 @@ public class Application {
         list.add(5, (double) countA3else/size1);
         list.add(6, (double) countA4if/size1);
         list.add(7, (double) countA4else/size1);
+        list.add(8, (double) size1/size);
         //Получение работы по таблице с истинными кистами
         ArrayList<Double> list1 = new ArrayList<Double>();
         int scoreA1if = 0;
@@ -146,8 +146,28 @@ public class Application {
         list1.add(5, (double) scoreA3else/size2);
         list1.add(6, (double) scoreA4if/size2);
         list1.add(7, (double) scoreA4else/size2);
-        for(Double f:list1){
-            System.out.println(f);
+        list1.add(8,(double) size2/size);
+        //Расчет апостериорных вероятностей
+        ArrayList<Double> E1 = new ArrayList <Double>();
+        E1.add(0, (list.get(0)*list.get(8))/(list.get(0)*list.get(8)+list1.get(0)*list1.get(8)));
+        E1.add(1, (list.get(1)*list.get(8))/(list.get(1)*list.get(8)+list1.get(1)*list1.get(8)));
+        E1.add(2, (list.get(2)*list.get(8))/(list.get(2)*list.get(8)+list1.get(2)*list1.get(8)));
+        E1.add(3, (list.get(3)*list.get(8))/(list.get(3)*list.get(8)+list1.get(3)*list1.get(8)));
+        E1.add(4, (list.get(4)*list.get(8))/(list.get(4)*list.get(8)+list1.get(4)*list1.get(8)));
+        E1.add(5, (list.get(5)*list.get(8))/(list.get(5)*list.get(8)+list1.get(5)*list1.get(8)));
+        E1.add(6, (list.get(6)*list.get(8))/(list.get(6)*list.get(8)+list1.get(6)*list1.get(8)));
+        E1.add(7, (list.get(7)*list.get(8))/(list.get(7)*list.get(8)+list1.get(7)*list1.get(8)));
+        ArrayList<Double> E2 = new ArrayList <Double>();
+        E2.add(0, (list1.get(0)*list1.get(8))/(list1.get(0)*list1.get(8)+list.get(0)*list.get(8)));
+        E2.add(1, (list1.get(1)*list1.get(8))/(list1.get(1)*list1.get(8)+list.get(1)*list.get(8)));
+        E2.add(2, (list1.get(2)*list1.get(8))/(list1.get(2)*list1.get(8)+list.get(2)*list.get(8)));
+        E2.add(3, (list1.get(3)*list1.get(8))/(list1.get(3)*list1.get(8)+list.get(3)*list.get(8)));
+        E2.add(4, (list1.get(4)*list1.get(8))/(list1.get(4)*list1.get(8)+list.get(4)*list.get(8)));
+        E2.add(5, (list1.get(5)*list1.get(8))/(list1.get(5)*list1.get(8)+list.get(5)*list.get(8)));
+        E2.add(6, (list1.get(6)*list1.get(8))/(list1.get(6)*list1.get(8)+list.get(6)*list.get(8)));
+        E2.add(7, (list1.get(7)*list1.get(8))/(list1.get(7)*list1.get(8)+list.get(7)*list.get(8)));
+        for(Double k:E2){
+            System.out.println(k);
         }
         new MobileRoutes();
         new SiteRoutes();
