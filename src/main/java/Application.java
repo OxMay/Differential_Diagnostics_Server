@@ -5,6 +5,7 @@ import dao.Factory;
 import model.TrueCyst;
 import model.falseCyst;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static spark.Spark.port;
@@ -32,178 +33,124 @@ public class Application {
         Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Пациент3",8.05,10.395,7.275,6.519));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Смирнов2",4.113,8.34,8.37,4.532));
         //ПОЛУЧЕНИЕ ГРАНИЦ ДЛЯ ВСЕХ А
-
         List<falseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getAllObjects();
-
         double sumA1 = 0;
         double sumA2 = 0;
         double sumA3 = 0;
         double sumA4 = 0;
-        //границы
-        for (falseCyst falsec: falseCystList
-             ) {
-
+        for (falseCyst falsec: falseCystList){
             sumA1 += falsec.getA1();
             sumA2 += falsec.getA2();
+            sumA3 += falsec.getA3();
+            sumA4 += falsec.getA4();
+        }
+        List<TrueCyst> trueCystList = Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getAllObjects();
+        double sumA1t = 0;
+        double sumA2t = 0;
+        double sumA3t = 0;
+        double sumA4t = 0;
+        for (TrueCyst trueC: trueCystList){
+            sumA1 += trueC.getA1();
+            sumA2 += trueC.getA2();
+            sumA3 += trueC.getA3();
+            sumA4 += trueC.getA4();
+        }
+        int size1=falseCystList.size();
+        int size2=trueCystList.size();
+
+        int size = size1+size2;
+        double border1 = (sumA1 + sumA1t)/size;
+        double border2 = (sumA2 + sumA2t)/size;
+        double border3 = (sumA3 + sumA3t)/size;
+        double border4 = (sumA4 + sumA4t)/size;
+        System.out.println(border4);
+        //Полчение работы по таблице с ложными кистами
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int countA1if = 0;
+        int countA1else = 0;
+        int countA2if = 0;
+        int countA2else =0;
+        int countA3if = 0;
+        int countA3else = 0;
+        int countA4if = 0;
+        int countA4else = 0;
+        for (falseCyst workF: falseCystList){
+            if(workF.getA1() > border1){
+                countA1if++;
+            }else{
+                countA1else++;
+            }
+            if (workF.getA2() > border2){
+                countA2if++;
+            }else{
+                countA2else++;
+            }
+            if (workF.getA3()>border3){
+                countA3if++;
+            }else{
+                countA3else++;
+            }
+            if (workF.getA4()>border4){
+                countA4if++;
+            }else{
+                countA4else++;
+            }
         }
 
-
-        double bdT=0;
-        double bdF = 0;
-        int [][] mas = new int[2][8];
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class). getObject("usersId", i));
-            bdF = bdF + falseCyst.getA1();
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            bdT = bdT + trueCyst.getA1();
-        }
-        double bdF1=0;
-        double bdT1=0;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            bdF1 = bdF1 + falseCyst.getA2();
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            bdT1 = bdT1 + trueCyst.getA2();
-        }
-        double bdF2=0;
-        double bdT2 = 0;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            bdF2 = bdF2 + falseCyst.getA3();
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            bdT2 = bdT2 + trueCyst.getA3();
-        }
-        double bdF3=0;
-        double bdT3=0;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            bdF3 = bdF3 + falseCyst.getA4();
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            bdT3 = bdT3 + trueCyst.getA4();
-        }
-        double bd1 = (bdF+bdT)/10;
-        double bd2 = (bdF1+bdT1)/10;
-        double bd3 = (bdF2+bdT2)/10;
-        double bd4 = (bdF2+bdT2)/10;
-        //ПОЛУЧЕНИЕ А1
-        int count1=1;
-        int count2=1;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            double A1 = falseCyst.getA1();
-            if (A1>bd1){
-                mas[0][0] = count1++;
-            }else {
-
-                mas[0][1] = count2++;
+        list.add(0, countA1if);
+        list.add(1, countA1else);
+        list.add(2, countA2if);
+        list.add(3, countA2else);
+        list.add(4, countA3if);
+        list.add(5, countA3else);
+        list.add(6, countA4if);
+        list.add(7, countA4else);
+        //Получение работы по таблице с истинными кистами
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        int scoreA1if = 0;
+        int scoreA1else = 0;
+        int scoreA2if = 0;
+        int scoreA2else = 0;
+        int scoreA3if = 0;
+        int scoreA3else = 0;
+        int scoreA4if = 0;
+        int scoreA4else = 0;
+        for (TrueCyst workT: trueCystList){
+            if(workT.getA1()>border1){
+                scoreA1if++;
+            }else{
+                scoreA1else++;
+            }
+            if (workT.getA2()>border2){
+                scoreA2if++;
+            }else{
+                scoreA2else++;
+            }
+            if (workT.getA3()>border3){
+                scoreA3if++;
+            }else{
+                scoreA3else++;
+            }
+            if (workT.getA4()>border4){
+                scoreA4if++;
+            }else{
+                scoreA4else++;
             }
 
         }
-        // ПОЛУЧЕНИЕ А2
-        int count3=1;
-        int count4=1;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            double A2 = falseCyst.getA2();
-            if (A2>bd2){
-                mas[0][2] = count3++;
-            }else {
-
-                mas[0][3] = count4++;
-            }
-
-        }
-        //ПОЛУЧЕНИЕ А3
-        int count5=1;
-        int count6=1;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            double A3 = falseCyst.getA3();
-            if (A3>bd3){
-                mas[0][4] = count5++;
-            }else {
-
-                mas[0][5] = count6++;
-            }
-
-        }
-        //ПОЛУЧЕНИЕ А4
-        int count7=1;
-        int count8=1;
-        for (int i=1;i<=5;i++) {
-            falseCyst falseCyst = falseCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId", i));
-            double A4 = falseCyst.getA4();
-            if (A4>bd4){
-                mas[0][6] = count7++;
-            }else {
-
-                mas[0][7] = count8++;
-            }
-
-        }
-        //ПОЛУЧЕНИЕ А1
-        int count9=1;
-        int count10=1;
-        for (int i=1;i<=5;i++) {
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            double A1 = trueCyst.getA1();
-            if (A1>bd1){
-                mas[1][0] = count9++;
-            }else {
-
-                mas[1][1] = count10++;
-            }
-
-        }
-        // ПОЛУЧЕНИЕ А2
-        int count11=1;
-        int count12=1;
-        for (int i=1;i<=5;i++) {
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            double A2 = trueCyst.getA2();
-            if (A2>bd2){
-                mas[1][2] = count11++;
-            }else {
-
-                mas[1][3] = count12++;
-            }
-
-        }
-        //ПОЛУЧЕНИЕ А3
-        int count13=1;
-        int count14=1;
-        for (int i=1;i<=5;i++) {
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            double A3 = trueCyst.getA3();
-            if (A3>bd3){
-                mas[1][4] = count13++;
-            }else {
-
-                mas[1][5] = count14++;
-            }
-
-        }
-        //ПОЛУЧЕНИЕ А4
-        int count15=1;
-        int count16=1;
-        for (int i=1;i<=5;i++) {
-            TrueCyst trueCyst = TrueCyst.class.cast(Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("usersId", i));
-            double A4 = trueCyst.getA4();
-            if (A4>bd4){
-                mas[1][6] = count15++;
-            }else {
-
-                mas[1][7] = count16++;
-            }
-
-        }
-        for(int i = 0; i<2;i++){
-            for (int j=0;j<8;j++){
-                System.out.println(mas[i][j]);
-            }
-
-        }
-//        Factory.getInstance().getGenericRepositoryInterface(tableWork.class).
+        list1.add(0,scoreA1if);
+        list1.add(1,scoreA1else);
+        list1.add(2,scoreA2if);
+        list1.add(3,scoreA2else);
+        list1.add(4,scoreA3if);
+        list1.add(5,scoreA3else);
+        list1.add(6,scoreA4if);
+        list1.add(7,scoreA4else);
+//        for(Integer f:list){
+//            System.out.println(f);
+//        }
+        float k = 1/5f;
+        System.out.println(k);
         new MobileRoutes();
         new SiteRoutes();
         new AdministrationRoutes();

@@ -9,8 +9,8 @@ import javax.persistence.*;
  */
     @Entity
 //@SequenceGenerator(name = "user_", sequenceName = "user_")
-    @Table(name = "trueCyst")
-    public class trueCyst {
+    @Table(name = "TrueCyst")
+    public class TrueCyst {
         @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
         @GeneratedValue(generator = "increment")
@@ -34,7 +34,7 @@ import javax.persistence.*;
         @Column(name = "A4", nullable = true)
         private Double A4;
 
-        public trueCyst(String pacient, Double A1, Double A2, Double A3, Double A4) {
+        public TrueCyst(String pacient, Double A1, Double A2, Double A3, Double A4) {
             this.pacient = pacient;
             this.A1 = A1;
             this.A2 = A2;
@@ -42,7 +42,7 @@ import javax.persistence.*;
             this.A4 = A4;
         }
 
-        public trueCyst() {
+        public TrueCyst() {
         }
 
         public Long getUsersId() {
