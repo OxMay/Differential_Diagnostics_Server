@@ -13,6 +13,7 @@ import utils.template.VelocityTemplateEngine;
 import javax.servlet.MultipartConfigElement;
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
@@ -45,11 +46,13 @@ public class SiteRoutes extends BaseRoutes {
             Double as2 =  request.session().attribute("two");
             Double as3 =  request.session().attribute("three");
             Double as4 =  request.session().attribute("four");
+            ArrayList <Double> border = Borders.borders();
 
-            Double [][] mas = modelA1.modelA1();
+
+            Double [][] mas = modelA1.modelA1(border);
             double t =0;
             double t1 = 0;
-            if(as1>8.7){
+            if(as1>border.get(0)){
                 t=mas[1][0];
                 t1=mas[0][0];
             }else{
@@ -58,33 +61,33 @@ public class SiteRoutes extends BaseRoutes {
 
             }
 
-            if (as2>10){
+            if (as2>border.get(1)){
                 t=t*mas[1][2];
                 t1=t1*mas[0][2];
             }else {
-                t=t*mas[0][3];
-                t1=t1*mas[1][3];
+                t=t*mas[1][3];
+                t1=t1*mas[0][3];
             }
-            if (as3>5.67){
+            if (as3>border.get(2)){
                 t=t*mas[1][4];
                 t1=t1*mas[0][4];
             }else {
                 t=t*mas[1][5];
                 t1=t1*mas[0][5];
             }
-            if (as4>5.73){
+            if (as4>border.get(3)){
                 t=t*mas[1][6];
                 t1=t1*mas[0][6];
             }else {
                 t=t*mas[1][7];
-                t1=t1*mas[1][7];
+                t1=t1*mas[0][7];
             }
             if(t>t1){
                 double sum1 = t/(t+t1);
-                model.put("A5","внутри");
+                model.put("A5","Внутрипротоковая киста");
             }else {
                 double sum2 = t1/(t+t1);
-                model.put("A5","вне");
+                model.put("A5","Внепротоковая киста");
             }
 
             model.put("A1", as1);

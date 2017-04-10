@@ -11,38 +11,16 @@ import java.util.List;
  * Created by Lantiets on 06.04.2017.
  */
 public class modelA1 {
-    public static Double[][] modelA1(){
+    public static Double[][] modelA1( ArrayList<Double> arrayList){
         //ПОЛУЧЕНИЕ ГРАНИЦ ДЛЯ ВСЕХ А
         List<falseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getAllObjects();
-        double sumA1 = 0;
-        double sumA2 = 0;
-        double sumA3 = 0;
-        double sumA4 = 0;
-        for (falseCyst falsec: falseCystList){
-            sumA1 += falsec.getA1();
-            sumA2 += falsec.getA2();
-            sumA3 += falsec.getA3();
-            sumA4 += falsec.getA4();
-        }
+
         List<TrueCyst> trueCystList = Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getAllObjects();
-        double sumA1t = 0;
-        double sumA2t = 0;
-        double sumA3t = 0;
-        double sumA4t = 0;
-        for (TrueCyst trueC: trueCystList){
-            sumA1 += trueC.getA1();
-            sumA2 += trueC.getA2();
-            sumA3 += trueC.getA3();
-            sumA4 += trueC.getA4();
-        }
         int size1=falseCystList.size();
         int size2=trueCystList.size();
 
         int size = size1+size2;
-        double border1 = (sumA1 + sumA1t)/size;
-        double border2 = (sumA2 + sumA2t)/size;
-        double border3 = (sumA3 + sumA3t)/size;
-        double border4 = (sumA4 + sumA4t)/size;
+
         //Полчение работы по таблице с ложными кистами
         ArrayList<Double> list = new ArrayList<Double>();
         int countA1if = 0;
@@ -54,22 +32,22 @@ public class modelA1 {
         int countA4if = 0;
         int countA4else = 0;
         for (falseCyst workF: falseCystList){
-            if(workF.getA1() > border1){
+            if(workF.getA1() > arrayList.get(0)){
                 countA1if++;
             }else{
                 countA1else++;
             }
-            if (workF.getA2() > border2){
+            if (workF.getA2() > arrayList.get(1)){
                 countA2if++;
             }else{
                 countA2else++;
             }
-            if (workF.getA3()>border3){
+            if (workF.getA3()>arrayList.get(2)){
                 countA3if++;
             }else{
                 countA3else++;
             }
-            if (workF.getA4()>border4){
+            if (workF.getA4()>arrayList.get(3)){
                 countA4if++;
             }else{
                 countA4else++;
@@ -96,22 +74,22 @@ public class modelA1 {
         int scoreA4if = 0;
         int scoreA4else = 0;
         for (TrueCyst workT: trueCystList){
-            if(workT.getA1()>border1){
+            if(workT.getA1()>arrayList.get(0)){
                 scoreA1if++;
             }else{
                 scoreA1else++;
             }
-            if (workT.getA2()>border2){
+            if (workT.getA2()>arrayList.get(1)){
                 scoreA2if++;
             }else{
                 scoreA2else++;
             }
-            if (workT.getA3()>border3){
+            if (workT.getA3()>arrayList.get(2)){
                 scoreA3if++;
             }else{
                 scoreA3else++;
             }
-            if (workT.getA4()>border4){
+            if (workT.getA4()>arrayList.get(3)){
                 scoreA4if++;
             }else{
                 scoreA4else++;
