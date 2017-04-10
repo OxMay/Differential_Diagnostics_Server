@@ -46,6 +46,47 @@ public class SiteRoutes extends BaseRoutes {
             Double as3 =  request.session().attribute("three");
             Double as4 =  request.session().attribute("four");
 
+            Double [][] mas = modelA1.modelA1();
+            double t =0;
+            double t1 = 0;
+            if(as1>8.7){
+                t=mas[1][0];
+                t1=mas[0][0];
+            }else{
+                t=mas[1][1];
+                t1=mas[0][1];
+
+            }
+
+            if (as2>10){
+                t=t*mas[1][2];
+                t1=t1*mas[0][2];
+            }else {
+                t=t*mas[0][3];
+                t1=t1*mas[1][3];
+            }
+            if (as3>5.67){
+                t=t*mas[1][4];
+                t1=t1*mas[0][4];
+            }else {
+                t=t*mas[1][5];
+                t1=t1*mas[0][5];
+            }
+            if (as4>5.73){
+                t=t*mas[1][6];
+                t1=t1*mas[0][6];
+            }else {
+                t=t*mas[1][7];
+                t1=t1*mas[1][7];
+            }
+            if(t>t1){
+                double sum1 = t/(t+t1);
+                model.put("A5","внутри");
+            }else {
+                double sum2 = t1/(t+t1);
+                model.put("A5","вне");
+            }
+
             model.put("A1", as1);
             model.put("A2", as2);
             model.put("A3", as3);
@@ -72,17 +113,12 @@ public class SiteRoutes extends BaseRoutes {
                 String json = gson.toJson(massive);
                 model.put("mas",json);
 
+
                 request.session().attribute("one", A1);
                 request.session().attribute("two", A2);
                 request.session().attribute("three", A3);
                 request.session().attribute("four", A4);
-                int [][] result = modelA1.modelA1();
-                for(int i = 0; i<2;i++){
-                    for (int j=0;j<result.length;i++){
-                        System.out.println(result[i][j]);
-                    }
 
-                }
                 return new ModelAndView(model, "/public/dataDownload.html");
             }
 //            catch (Exception e) {
@@ -91,6 +127,7 @@ public class SiteRoutes extends BaseRoutes {
 //            }
 
         }, new VelocityTemplateEngine());
+
 
 
 
