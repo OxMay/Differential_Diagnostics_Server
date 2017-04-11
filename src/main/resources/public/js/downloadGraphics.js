@@ -1,9 +1,11 @@
-   var json = JSON.parse(mas)
+
    var svg = d3.select("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var input = d3.select("input"),
+    value = input.attr("value");
 
 //var parseTime = d3.timeParse("%d-%b-%y");
 
@@ -17,7 +19,7 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-d3.json(json, function(d) {
+d3.json(value, function(d) {
   d.date = +d.date;
   d.close = +d.close;
   return d;
