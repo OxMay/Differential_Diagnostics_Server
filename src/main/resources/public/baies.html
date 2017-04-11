@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="mdl/material.min.css">
         <link rel="stylesheet" href="style/style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style/bootstrap.css">
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+
         <script defer src="mdl/material.min.js"></script>
         <meta charset="UTF-8">
         <style>
@@ -46,6 +50,8 @@
             .demo-card-event > .mdl-card__actions > .mdl-button {
                 color: #fff;
             }
+
+
         </style>
     </head>
     <body>
@@ -61,8 +67,11 @@
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics.html">Сравнение по режимам</a>
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics2.html">Cравнение по разведениям</a>
                     <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="Primer.html">Пример Байеса</a>
-                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="baies.html">Рассчет метода Байеса</a>
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="dataDownload.html">Рассчет метода Байеса</a>
                 </nav>
+
+
+
                 <main class="mdl-layout__content mdl-color--grey-100">
                     <div>
                         <div class="mdl-grid">
@@ -73,7 +82,10 @@
                 </main>
             </div>
             <main class="mdl-layout__content mdl-color--grey-100" align="center">
-                <div >
+
+
+
+
                     <div class="thumbnails">
                         <ins class="thumbnail">
                             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
@@ -190,19 +202,43 @@
                             <div class="demo-card-event mdl-card mdl-shadow--2dp">
                                 <div class="mdl-card__title mdl-card--expand">
                                     <h6 align="justify">
-                                        Убедитесь, что все значения введены верно. Если вы готовы продолжить работу, нажмите кнопку "Диагноз пациента"
+                                        Расчёт по методу Байеса завершен. Если желаете записать полученные результаты в базу данных, нажмите на кнопку "Сохранить".
                                     </h6>
                                 </div> 
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" font-size="10px">
-                                         Диагноз пациента
-                                    </a>
+                                    <a  class="btn btn-lg btn-success" href="#" data-toggle="modal" data-target="#basicModal">Открыть модальное окно</a>
+
+
                                     <div class="mdl-layout-spacer"></div>
                                 </div>
                             </div>
                         </ins>
                     </div>
-                </div>
+
+
             </main>
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Сохранение в базу данных</h4>
+                            <button class="close" type="button" data-dismiss="modal">x</button>
+                        </div>
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/getresult">
+                        <div class="modal-body">
+                            <h3>Для того, чтобы сохранить результаты в базу данных, необходимо ввести инициалы пациента</h3>
+
+                            <input class="mdl-textfield__input" type="text" name="upload" id="upload">
+
+                        </div>
+                        <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button>
+                            <button class="btn btn-primary" type="submit" id="submit" href="#1" data-toggle="modal1" data-target="#basicModal1">Сохранить изменения</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script src="js/pop-upWindow.js"></script>
     </body>
 </html>

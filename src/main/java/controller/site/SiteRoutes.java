@@ -6,6 +6,8 @@ import controller.BaseRoutes;
 import controller.site.api.UsersApi;
 import dao.Factory;
 import model.Groups;
+import model.TrueCyst;
+import model.falseCyst;
 import spark.ModelAndView;
 import utils.*;
 import utils.template.VelocityTemplateEngine;
@@ -18,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static java.lang.String.valueOf;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -47,46 +50,14 @@ public class SiteRoutes extends BaseRoutes {
             Double as3 =  request.session().attribute("three");
             Double as4 =  request.session().attribute("four");
             ArrayList <Double> border = Borders.borders();
-
-
             Double [][] mas = modelA1.modelA1(border);
-            double t =0;
-            double t1 = 0;
-            if(as1>border.get(0)){
-                t=mas[1][0];
-                t1=mas[0][0];
-            }else{
-                t=mas[1][1];
-                t1=mas[0][1];
+            ArrayList<Double> comparisonOfVariables = CalculationMethodBaies.procent(border,as1,as2,as3,as4,mas);
 
-            }
-
-            if (as2>border.get(1)){
-                t=t*mas[1][2];
-                t1=t1*mas[0][2];
-            }else {
-                t=t*mas[1][3];
-                t1=t1*mas[0][3];
-            }
-            if (as3>border.get(2)){
-                t=t*mas[1][4];
-                t1=t1*mas[0][4];
-            }else {
-                t=t*mas[1][5];
-                t1=t1*mas[0][5];
-            }
-            if (as4>border.get(3)){
-                t=t*mas[1][6];
-                t1=t1*mas[0][6];
-            }else {
-                t=t*mas[1][7];
-                t1=t1*mas[0][7];
-            }
-            if(t>t1){
-                double sum1 = t/(t+t1);
+            if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
+                double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
                 model.put("A5","Внутрипротоковая киста");
             }else {
-                double sum2 = t1/(t+t1);
+                double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
                 model.put("A5","Внепротоковая киста");
             }
 
@@ -97,6 +68,43 @@ public class SiteRoutes extends BaseRoutes {
 
             return new ModelAndView(model, "/public/baies.html");
         }, new VelocityTemplateEngine());
+
+       post(ROOT + "getresult", (request, response) -> {
+
+        request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
+        try (InputStream is = request.raw().getPart("upload").getInputStream()) {
+            File file = StreamUtil.stream2file(is);
+            String strFromFile = FileWorker.read(file);
+            HashMap<String, Object> model = new HashMap<>();
+            Double as1 =  request.session().attribute("one");
+            Double as2 =  request.session().attribute("two");
+            Double as3 =  request.session().attribute("three");
+            Double as4 =  request.session().attribute("four");
+            ArrayList <Double> border = Borders.borders();
+            Double [][] mas = modelA1.modelA1(border);
+            ArrayList<Double> comparisonOfVariables = CalculationMethodBaies.procent(border,as1,as2,as3,as4,mas);
+
+            if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
+                double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                model.put("A5","Внутрипротоковая киста");
+                Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst(strFromFile,as1,as2,as3,as4));
+            }else {
+                double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                model.put("A5","Внепротоковая киста");
+                Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst(strFromFile,as1,as2,as3,as4));
+
+            }
+            System.out.println(strFromFile);
+
+
+            return new ModelAndView(model, "/public/baies.html");
+        }
+//            catch (Exception e) {
+//                log.log(SEVERE, "Exception: ", e);
+//                return e;
+//            }
+
+    }, new VelocityTemplateEngine());
 
         post(ROOT + "getfile", (request, response) -> {
 
