@@ -12,6 +12,24 @@
         
         <meta charset="UTF-8">
         <style>
+            .thumbnails{
+            /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
+            margin: -3em 0 0 -2em;
+            /* Выравнивание по центру */
+            text-align: center;
+            }
+            .thumbnail{/* Убираем подчеркивание у элемента ins,который был использован для совместимости со старыми версиями Internet Explorer */
+            text-decoration: none;
+            /* Следующее правило для Firefox 2 */
+            display: -moz-inline-box;
+            /* а это для остальных */
+            display: inline-block;
+            vertical-align: top;
+            /* Убираем выравнивание по центру */
+            text-align: left;
+            /* Отступы между блоками */
+            margin: 3em 0 0 2em;
+            }
            .axis--x path {
   display: none;
 }
@@ -101,6 +119,8 @@ width:160px;
                 </main>
             </div>
             <main class="mdl-layout__content mdl-color--grey-100">
+                <div class="thumbnails">
+                    <ins class="thumbnail">
                     <div>
                         <div>
                             <div>
@@ -118,36 +138,29 @@ width:160px;
              </div>
          </div>
     </form>
-                                <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
-                                    <div class="mdl-textfield mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text"  readonly="readonly" name="discipline_name" value="$mas">
-                                        <label class="mdl-textfield__label">Введите значение</label>
-                                    </div>
-                                </form>
-                                
-                                <div class="page-content">
+
+                                        <input class="mdl-textfield__input" type="text" name="discipline_name" value="$get">
+
+
+                            </div>
+                        </div>
+                    </div>
+                        </ins>
+
+
+                    <ins class="thumbnail">
+                <div class="page-content">
                     <button class="mdl-button mdl-js-button mdl-button--primary">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/getresult">
-                            Сформировать диагностическую модель
+                            Рассчитать показатели работы
                         </a>
                     </button>
                 </div>
-                            </div>
-                        </div>
+                        </ins>
                     </div>
                 </main>
            
-              <main class="mdl-layout__content mdl-color--grey-100">
-                    <div>
-                        <div>
-                            <div class="mdl-cell--1-col">
-                                <input class="mdl-textfield__input" type="text"  readonly="readonly" name="discipline_name" value="$mas">
-                                <svg width="500" height="300"></svg>
-                                 <script src="js/downloadGraphics.js"></script> 
-                            </div>
-                        </div>
-                    </div>
-                </main>
+
           <script src="js/overview.js"></script> 
        
     </body>

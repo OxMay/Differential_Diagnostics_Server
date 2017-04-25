@@ -3,7 +3,6 @@ package controller.site.admin;
 import controller.BaseRoutes;
 import controller.logic.Api;
 import controller.logic.LessonTimeController;
-import controller.logic.ScheduleSite;
 import controller.site.admin.api.*;
 import model.*;
 import spark.ModelAndView;
@@ -25,7 +24,6 @@ public class AdministrationRoutes extends BaseRoutes {
         new GroupsApi();
         new LectureHallApi();
         new LessonTimeApi();
-        new ScheduleApi();
         new TeacherApi();
         new EmploymentTypeApi();
     }
@@ -48,9 +46,7 @@ public class AdministrationRoutes extends BaseRoutes {
            return new ModelAndView(new HashMap<>(), "/public/admin/index.html");
         }, new VelocityTemplateEngine());
 
-        get(ROOT+"schedule", (request, response) -> {
-            return new ModelAndView(ScheduleSite.getSchedule(request.queryParams("name"),request.queryParams("numberWeekDay")), "/public/admin/schedule_new.html");
-        }, new VelocityTemplateEngine());
+
 
         get(ROOT + "groups", (request, response) -> {
             String query = request.queryParams("type");

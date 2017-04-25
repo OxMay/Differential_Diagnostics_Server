@@ -181,7 +181,7 @@
                             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
                                 <thead>
                                     <tr>
-                                        <th class="mdl-data-table__cell--non-numeric">Биохимические показатели</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Результат</th>
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -189,7 +189,7 @@
                                         <td class="mdl-data-table__cell--non-numeric">
                                             <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
                                                 <div class="mdl-textfield mdl-js-textfield">
-                                                    <input class="mdl-textfield__input" type="text" name="discipline_name" value="$A5">
+                                                    <input class="mdl-textfield__input" type="text"  value="$A5">
                                                     <label class="mdl-textfield__label">Введите значение</label>
                                                 </div>
                                             </form>
@@ -199,6 +199,29 @@
                             </table>  
                         </ins>
                         <ins class="thumbnail">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+                            <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Вероятность диагноза</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr >
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <form action="/admin/api/discipline.post" accept-charset="UTF-8" method="POST">
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="text"  value="$inside">
+                                            <label class="mdl-textfield__label">Введите значение</label>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                            </ins>
+                    </div>
+                <div class="thumbnails">
+                        <ins class="thumbnail">
                             <div class="demo-card-event mdl-card mdl-shadow--2dp">
                                 <div class="mdl-card__title mdl-card--expand">
                                     <h6 align="justify">
@@ -206,7 +229,7 @@
                                     </h6>
                                 </div> 
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a  class="btn btn-lg btn-success" href="#" data-toggle="modal" data-target="#basicModal">Открыть модальное окно</a>
+                                    <a  class="btn btn-lg btn-success" href="#" data-toggle="modal" data-target="#basicModal">Сохранить</a>
 
 
                                     <div class="mdl-layout-spacer"></div>

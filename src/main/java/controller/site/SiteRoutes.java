@@ -2,6 +2,7 @@ package controller.site;
 
 import com.google.gson.Gson;
 import com.sun.org.apache.xerces.internal.xs.StringList;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import controller.BaseRoutes;
 import controller.site.api.UsersApi;
 import dao.Factory;
@@ -56,10 +57,13 @@ public class SiteRoutes extends BaseRoutes {
             if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
                 double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
                 model.put("A5","Внутрипротоковая киста");
+                model.put("inside",sum1*100);
             }else {
                 double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
                 model.put("A5","Внепротоковая киста");
+                model.put("inside",sum2*100);
             }
+
 
             model.put("A1", as1);
             model.put("A2", as2);
@@ -67,6 +71,12 @@ public class SiteRoutes extends BaseRoutes {
             model.put("A4", as4);
 
             return new ModelAndView(model, "/public/baies.html");
+        }, new VelocityTemplateEngine());
+
+        get(ROOT+"getfile", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("get", "Файл загружен");
+            return new ModelAndView(model, "/public/dataDownload.html");
         }, new VelocityTemplateEngine());
 
        post(ROOT + "getresult", (request, response) -> {
@@ -115,14 +125,15 @@ public class SiteRoutes extends BaseRoutes {
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
                 Double[][] massive = parseString.read(strFromFile);
-                double A2 = calculationA2.calcA2(massive);
-                double A1 = calculationA1.calcA1(massive);
-                double A3 = calculationA3.calcA3(massive);
-                double A4 = calculationA4.calcA4(massive);
+                Double A2 = calculationA2.calcA2(massive);
+                Double A1 = calculationA1.calcA1(massive);
+                Double A3 = calculationA3.calcA3(massive);
+                Double A4 = calculationA4.calcA4(massive);
                 Gson gson = new Gson();
 
                 String json = gson.toJson(massive);
                 model.put("mas",json);
+                model.put("get","Файл загружен");
 
 
                 request.session().attribute("one", A1);
