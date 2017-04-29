@@ -25,7 +25,6 @@ public class Application {
 //        port(port);
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Антипова",7.025,11.845,6.942,0.589));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Корезина",5.342,9.327,5.457,2.165));
-//
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Одиноков",1.25,0.727,0.543,3.542));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Смирнов2",4.113,8.34,8.37,4.532));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Субботина",3.269,4.56,3.426,4.367));
