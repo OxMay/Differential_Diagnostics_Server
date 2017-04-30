@@ -17,23 +17,16 @@ import javax.persistence.*;
         @GenericGenerator(name = "increment", strategy = "increment")
 //    @GeneratedValue(generator = "user_")
         private Long usersId;
-
-        //
         @Column(name = "pacient", nullable = false, length = 36)
         private String pacient;
-
         @Column(name = "A1", nullable = false)
         private Double A1;
-
         @Column(name = "A2", nullable = false)
         private Double A2;
-
         @Column(name = "A3", nullable = false)
         private Double A3;
-
         @Column(name = "A4", nullable = true)
         private Double A4;
-
         public TrueCyst(String pacient, Double A1, Double A2, Double A3, Double A4) {
             this.pacient = pacient;
             this.A1 = A1;
@@ -41,18 +34,14 @@ import javax.persistence.*;
             this.A3 = A3;
             this.A4 = A4;
         }
-
         public TrueCyst() {
         }
-
         public Long getUsersId() {
             return usersId;
         }
-
         public void setUsersId(Long usersId) {
             this.usersId = usersId;
         }
-
         public String getPacient() {
             return pacient;
         }

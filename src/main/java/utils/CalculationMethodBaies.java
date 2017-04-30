@@ -16,9 +16,7 @@ public class CalculationMethodBaies {
         }else{
             t=mas[1][1];
             t1=mas[0][1];
-
         }
-
         if (as2>border.get(1)){
             t=t*mas[1][2];
             t1=t1*mas[0][2];
