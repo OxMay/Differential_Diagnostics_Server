@@ -31,8 +31,8 @@ public class Application {
         //внутрипротоковые
         Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Пивцов",16.03,10.69,4.62,5.75));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Нечаев",6.07,9.27,4.62,5.03));
-        Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Пациент2",7.05,8.395,3.275,5.519));
-        Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Пациент3",8.05,8.395,3.275,5.519));
+        Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Кисляков",6.05,0.26,0.066,3.19));
+        Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Добин",9.24,0.35,0.063,4.57));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Смирнов1",5.9,1.06,0.4,4.2));
 //        Double [][] mas = modelA1.modelA1();
 //        for (int i=0;i<2;i++){
