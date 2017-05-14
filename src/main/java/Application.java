@@ -3,11 +3,13 @@ import controller.site.SiteRoutes;
 import controller.site.admin.AdministrationRoutes;
 import dao.Factory;
 import model.TrueCyst;
+import model.Users;
 import model.falseCyst;
 import spark.Request;
 import utils.modelA1;
 
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,13 @@ public class Application {
         port(5555);
 //        port = Integer.parseInt(args[0]);
 //        port(port);
+        try {
+            Factory.getInstance().getUsersDAO().addUser(new Users("admin", null, "admin", "root", false));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Антипова",4.68,5.9,6.94,0.29));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Корезина",3.56,4.66,5.45,1.08));
         Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Одиноков",0.83,0.36,0.54,1.77));

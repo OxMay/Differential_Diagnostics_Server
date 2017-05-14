@@ -1,13 +1,20 @@
 package controller.site.admin;
 
+import com.google.gson.Gson;
 import controller.BaseRoutes;
 import controller.logic.Api;
 import controller.logic.LessonTimeController;
 import controller.site.admin.api.*;
+import dao.Factory;
 import model.*;
 import spark.ModelAndView;
+import utils.*;
 import utils.template.VelocityTemplateEngine;
 
+import javax.servlet.MultipartConfigElement;
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -43,48 +50,101 @@ public class AdministrationRoutes extends BaseRoutes {
         });
 
         get(ROOT, (request, response) -> {
-           return new ModelAndView(new HashMap<>(), "/public/admin/index.html");
+           return new ModelAndView(new HashMap<>(), "/public/index.html");
         }, new VelocityTemplateEngine());
 
 
-
-        get(ROOT + "groups", (request, response) -> {
-            String query = request.queryParams("type");
-            if(query.equals("list")){
-                return new ModelAndView(Api.getHashMapObjects(Groups.class), "/public/admin/groups_list.html");
-            }else if(query.equals("edit")){
-                return new ModelAndView(Api.getHashMapObjects(Groups.class), "/public/admin/group.html");
-            }
-            else {
-                return null;
-            }
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "users", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(Users.class), "/public/admin/users.html");
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "teacher", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(Teacher.class), "/public/admin/teacher.html");
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "discipline", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(Discipline.class), "/public/admin/discipline.html");
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "lectureHall", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(LectureHall.class), "/public/admin/lectureHall.html");
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "employmentType", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(EmploymentType.class), "/public/admin/employment_type.html");
-        }, new VelocityTemplateEngine());
-
-        get(ROOT + "time", (request, response) -> {
+        get(ROOT+"getresult", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
-            model.put(LessonTime.class.getName().substring(6), new LessonTime());
-            model.put(LessonTime.class.getName().substring(6)+"List", LessonTimeController.lessonTimeTransform(Api.getObjectList(LessonTime.class)));
-            return new ModelAndView(model, "/public/admin/lesson_time.html");
+            Double as1 =  request.session().attribute("one");
+            Double as2 =  request.session().attribute("two");
+            Double as3 =  request.session().attribute("three");
+            Double as4 =  request.session().attribute("four");
+            ArrayList<Double> border = Borders.borders();
+            Double [][] mas = modelA1.modelA1(border);
+            ArrayList<Double> comparisonOfVariables = CalculationMethodBaies.procent(border,as1,as2,as3,as4,mas);
+
+            if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
+                double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                model.put("A5","Внутрипротоковая киста");
+                model.put("inside",sum1*100);
+            }else {
+                double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                model.put("A5","Внепротоковая киста");
+                model.put("inside",sum2*100);
+            }
+            model.put("A1", as1);
+            model.put("A2", as2);
+            model.put("A3", as3);
+            model.put("A4", as4);
+            return new ModelAndView(model, "/public/baies.html");
         }, new VelocityTemplateEngine());
+
+        get(ROOT+"getfile", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("get", "Файл загружен");
+            return new ModelAndView(model, "/public/dataDownload.html");
+        }, new VelocityTemplateEngine());
+
+        post(ROOT + "getresult", (request, response) -> {
+            request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
+            try (InputStream is = request.raw().getPart("upload").getInputStream()) {
+                File file = StreamUtil.stream2file(is);
+                String strFromFile = FileWorker.read(file);
+                HashMap<String, Object> model = new HashMap<>();
+                Double as1 =  request.session().attribute("one");
+                Double as2 =  request.session().attribute("two");
+                Double as3 =  request.session().attribute("three");
+                Double as4 =  request.session().attribute("four");
+                ArrayList <Double> border = Borders.borders();
+                Double [][] mas = modelA1.modelA1(border);
+                ArrayList<Double> comparisonOfVariables = CalculationMethodBaies.procent(border,as1,as2,as3,as4,mas);
+                if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
+                    double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                    model.put("A5","Внутрипротоковая киста");
+                    Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst(strFromFile,as1,as2,as3,as4));
+                }else {
+                    double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
+                    model.put("A5","Внепротоковая киста");
+                    Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst(strFromFile,as1,as2,as3,as4));
+                }
+                System.out.println(strFromFile);
+                return new ModelAndView(model, "/public/baies.html");
+            }
+//            catch (Exception e) {
+//                log.log(SEVERE, "Exception: ", e);
+//                return e;
+//            }
+        }, new VelocityTemplateEngine());
+        post(ROOT + "getfile", (request, response) -> {
+            request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
+            try (InputStream is = request.raw().getPart("upload").getInputStream()) {
+                // Use the input stream to create a file
+                HashMap<String, Object> model = new HashMap<>();
+                File file = StreamUtil.stream2file(is);
+                String strFromFile = FileWorker.read(file);
+                Double[][] massive = parseString.read(strFromFile);
+                Double A2 = calculationA2.calcA2(massive);
+                Double A1 = calculationA1.calcA1(massive);
+                Double A3 = calculationA3.calcA3(massive);
+                Double A4 = calculationA4.calcA4(massive);
+                Gson gson = new Gson();
+                String json = gson.toJson(massive);
+                model.put("mas",json);
+                model.put("get","Файл загружен");
+                request.session().attribute("one", A1);
+                request.session().attribute("two", A2);
+                request.session().attribute("three", A3);
+                request.session().attribute("four", A4);
+                return new ModelAndView(model, "/public/dataDownload.html");
+            }
+//            catch (Exception e) {
+//                log.log(SEVERE, "Exception: ", e);
+//                return e;
+//            }
+        }, new VelocityTemplateEngine());
+
+
+
     }
 }
