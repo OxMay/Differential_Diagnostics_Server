@@ -2,8 +2,6 @@ package controller.site.admin;
 
 import com.google.gson.Gson;
 import controller.BaseRoutes;
-import controller.logic.Api;
-import controller.logic.LessonTimeController;
 import controller.site.admin.api.*;
 import dao.Factory;
 import model.*;
@@ -27,12 +25,6 @@ public class AdministrationRoutes extends BaseRoutes {
     private final String ROOT = "/admin/";
 
     private void initRoutes(){
-        new DisciplineApi();
-        new GroupsApi();
-        new LectureHallApi();
-        new LessonTimeApi();
-        new TeacherApi();
-        new EmploymentTypeApi();
     }
 
     @Override

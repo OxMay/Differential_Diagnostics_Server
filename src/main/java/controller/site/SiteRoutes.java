@@ -1,24 +1,11 @@
 package controller.site;
 
-import com.google.gson.Gson;
-import com.sun.org.apache.xerces.internal.xs.StringList;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import controller.BaseRoutes;
 import controller.site.api.UsersApi;
-import dao.Factory;
-import model.Groups;
-import model.TrueCyst;
-import model.falseCyst;
 import spark.ModelAndView;
-import utils.*;
 import utils.template.VelocityTemplateEngine;
 
-import javax.servlet.MultipartConfigElement;
-import java.io.File;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Logger;
 
 import static java.lang.String.valueOf;
