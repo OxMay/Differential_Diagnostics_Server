@@ -6,7 +6,7 @@ import model.TrueCyst;
 import model.Users;
 import model.falseCyst;
 import spark.Request;
-import utils.modelA1;
+import utils.ModelA1;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;

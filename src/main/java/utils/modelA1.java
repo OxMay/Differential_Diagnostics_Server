@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Lantiets on 06.04.2017.
  */
-public class modelA1 {
+public class ModelA1 {
     public static Double[][] modelA1( ArrayList<Double> arrayList){
         //ПОЛУЧЕНИЕ ГРАНИЦ ДЛЯ ВСЕХ А
         List<falseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getAllObjects();

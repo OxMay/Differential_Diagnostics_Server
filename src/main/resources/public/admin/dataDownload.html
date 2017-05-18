@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        #include("/public/template/include_head.html")
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+
+        <style>
+            .thumbnails{
+            /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
+            margin: -3em 0 0 -2em;
+            /* Выравнивание по центру */
+            text-align: center;
+            }
+            .thumbnail{/* Убираем подчеркивание у элемента ins,который был использован для совместимости со старыми версиями Internet Explorer */
+            text-decoration: none;
+            /* Следующее правило для Firefox 2 */
+            display: -moz-inline-box;
+            /* а это для остальных */
+            display: inline-block;
+            vertical-align: top;
+            /* Убираем выравнивание по центру */
+            text-align: left;
+            /* Отступы между блоками */
+            margin: 3em 0 0 2em;
+            }
+           .axis--x path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+ .fileform { 
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 26px;
+    overflow: hidden;
+    padding: 2px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    width: 230px;
+}
+ 
+.fileform .selectbutton { 
+    background-color: #A2A3A3;
+    border: 1px solid #939494;
+    border-radius: 2px;
+    color: #FFFFFF;
+    float: right;
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 2px 6px;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+}
+ 
+.fileform #upload{
+    position:absolute; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    -moz-opacity: 0; 
+    filter: alpha(opacity=0); 
+    opacity: 0; 
+    font-size: 150px; 
+    height: 30px; 
+    z-index:20;
+}
+            .fileform #fileformlabel { 
+background-color: #FFFFFF;
+float: left;
+height: 22px;
+line-height: 22px;
+overflow: hidden;
+padding: 2px;
+text-align: left;
+vertical-align: middle;
+width:160px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+            #include("public/template/include_navigation.html")
+
+            <main class="mdl-layout__content mdl-color--grey-100">
+                <div class="thumbnails">
+                    <ins class="thumbnail">
+                    <div>
+                        <div>
+                            <div>
+     <form class="form-horizontal" method="post" enctype="multipart/form-data" action="getfile">
+       <div class="fileform">
+            <div id="fileformlabel"></div>
+            <div class="selectbutton">Обзор</div>
+            <input type="file" name="upload" id="upload" onchange="getName(this.value);" />
+        </div>
+         
+         <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-8">
+                 <button type="submit" id="submit" class="btn btn-primary">Отправить</button>
+                 <div></div>
+             </div>
+         </div>
+    </form>
+
+                                        <input class="mdl-textfield__input" type="text" name="discipline_name" value="$get">
+
+
+                            </div>
+                        </div>
+                    </div>
+                        </ins>
+
+
+                    <ins class="thumbnail">
+                <div class="page-content">
+                    <button class="mdl-button mdl-js-button mdl-button--primary">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="getresult">
+                            Рассчитать показатели работы
+                        </a>
+                    </button>
+                </div>
+                        </ins>
+                    </div>
+                </main>
+           
+
+          <script src="../js/overview.js"></script>
+       
+    </body>
+</html>

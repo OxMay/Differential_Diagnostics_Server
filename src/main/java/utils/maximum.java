@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 /**
  * Created by Lantiets on 31.03.2017.
  */
-public class maximum {
+public class Maximum {
     // Принимает файл двумерного массива
         public static double max(Double [][] array) throws FileNotFoundException {
             //Записываем первый элемент массива в переменную

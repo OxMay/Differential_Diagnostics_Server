@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 /**
  * Created by Lantiets on 01.04.2017.
  */
-public class calculationA4 {
+public class CalculationA4 {
     public static double calcA4(Double[][] array) throws FileNotFoundException {
         //Находим максимальный индекс
-        int max_index = (int) maximum.max(array);
+        int max_index = (int) Maximum.max(array);
         //Находим нулевой индекс
         double null_index = array[0][1];
         //производим расчет и умножаем на эмпирический коэффициент

@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 /**
  * Created by Lantiets on 01.04.2017.
  */
-public class calculationA3 {
+public class CalculationA3 {
     public static double calcA3(Double[][] array) throws FileNotFoundException {
         //Нахождение точки начала графика
-        int start_index = (int) start.start(array);
+        int start_index = (int) Start.start(array);
         //Нахождение нулевого индекса массива
         double null_index = array[0][1];
         //Расчет работы А3

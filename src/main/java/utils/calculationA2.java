@@ -5,12 +5,12 @@ import java.io.FileNotFoundException;
 /**
  * Created by Lantiets on 31.03.2017.
  */
-public class calculationA2 {
+public class CalculationA2 {
     public static double calcA2(Double[][] array) throws FileNotFoundException {
         //Находим максимальную точку
-        int max_index = (int) maximum.max(array);
+        int max_index = (int) Maximum.max(array);
         //Находим точку начала графика
-        int start_index = (int) start.start(array);
+        int start_index = (int) Start.start(array);
         //Находим точку массива, соответствующую нулевому времени
         double null_index = array[0][1];
         //Производим расчет работы

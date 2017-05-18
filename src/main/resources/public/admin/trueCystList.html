@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="mdl/material.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+
+    <script defer src="mdl/material.min.js"></script>
+    <meta charset="UTF-8">
+    <style>
+        .thumbnails{
+        /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
+        margin: -3em 0 0 -2em;
+        /* Выравнивание по центру */
+        text-align: center;
+        }
+        .thumbnail{
+        /* Убираем подчеркивание у элемента ins,который был использован для совместимости со старыми версиями Internet Explorer */
+        text-decoration: none;
+        /* Следующее правило для Firefox 2 */
+        display: -moz-inline-box;
+        /* а это для остальных */
+        display: inline-block;
+        vertical-align: top;
+        /* Убираем выравнивание по центру */
+        text-align: left;
+        /* Отступы между блоками */
+        margin: 3em 0 0 2em;
+        }
+        .demo-card-event.mdl-card {
+        width: 350px;
+        min-height: inherit;
+        background: #2F4F4F;
+        margin-bottom: inherit;
+        }
+        .demo-card-event > .mdl-card__title {
+        align-content: center;
+        }
+        .demo-card-event > .mdl-card__title > h6 {
+        margin-top: 0;
+        margin-bottom: inherit;
+        min-height: inherit;
+        }
+        .demo-card-event > .mdl-card__title,
+        .demo-card-event > .mdl-card__actions > .mdl-button {
+        color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+    <header class="mdl-layout__header mdl-color--blue-grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            <span id="header_title" class="mdl-layout-title">Административная панель</span>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl mdl-color-text--blue-grey-50">
+        <nav class="mdl-navigation mdl-color--blue-grey-800">
+            <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="index.html">Главная</a>
+            <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics.html">Сравнение по режимам</a>
+            <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="graphics2.html">Cравнение по разведениям</a>
+            <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="Primer.html">Пример Байеса</a>
+            <a class="mdl-navigation__link mdl-color-text--blue-grey-400" href="dataDownload.html">Рассчет метода Байеса</a>
+        </nav>
+
+
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell--1-col">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <main class="mdl-layout__content mdl-color--grey-100" align="center">
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell--1-col">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Группа</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #foreach($Groups in $GroupsList)
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <form action="/admin/api/groups.delete" accept-charset="UTF-8" method="POST">
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="text" name="groups_name"
+                                                   value="$Groups.groupsName">
+                                        </div>
+                                        <input class="mdl-button mdl-js-button mdl-button--colored" type="submit"
+                                               value="delete">
+                                    </form>
+                                </td>
+                            </tr>
+                            #end
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <form action="/admin/api/groups.post" accept-charset="UTF-8" method="POST">
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="text" name="groups_name">
+                                            <label class="mdl-textfield__label">Добавить группу</label>
+                                        </div>
+                                        <input class="mdl-button mdl-js-button mdl-button--colored" type="submit"
+                                               value="ADD">
+                                    </form>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+
+
+</body>
+<script src = "/js/cookie.js"></script>
+<script src="../js/setCookieAndLink.js"></script>
+<script src="/admin/js/link_groups.js"></script>
+</html>
