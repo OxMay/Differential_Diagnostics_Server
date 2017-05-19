@@ -32,7 +32,7 @@ public class FalseCystApi extends BaseRoutes {
             try{
                 response.redirect(ROOT.substring(0,7) + "falseCystList");
                 return Factory.getInstance().getGenericRepositoryInterface().removeObject(
-                        Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("pacient",request.queryParams("pacient_name")));
+                        Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId",request.queryParams("users_Id")));
             }catch (Exception e){
                 log.log(Level.SEVERE, "Exception: ", e);
                 return e;

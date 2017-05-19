@@ -21,6 +21,7 @@
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="table">
                         <thead>
                         <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Id</th>
                             <th class="mdl-data-table__cell--non-numeric">Инициалы</th>
                             <th class="mdl-data-table__cell--non-numeric">А1</th>
                             <th class="mdl-data-table__cell--non-numeric">А2</th>
@@ -33,9 +34,9 @@
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric">
                                 <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
-                                    <div class="mdl-textfield mdl-textfield--expandable mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text" name="pacient_name"
-                                               value="$TrueCyst.pacient">
+                                    <div class="mdl-textfield--expandable mdl-js-textfield">
+                                        <input class="mdl-textfield__input" type="text" name="users_Id" readonly="readonly"
+                                               value="$TrueCyst.usersId">
 
                                     </div>
                                     <input class="mdl-button mdl-js-button mdl-button--colored" type="submit"
@@ -43,9 +44,18 @@
                                 </form>
                             </td>
                             <td class="mdl-data-table__cell--non-numeric">
+                                <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
+                                    <div class="mdl-textfield mdl-textfield--expandable mdl-js-textfield">
+                                        <input class="mdl-textfield__input" type="text" readonly="readonly"
+                                               value="$TrueCyst.pacient">
+
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
                                         <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                             <div class="mdl-textfield--expandable mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="text" name="pacient_name"
+                                                <input class="mdl-textfield__input" type="text" readonly="readonly"
                                                        value="$TrueCyst.A1">
                                     </div>
                                 </form>
@@ -54,7 +64,7 @@
                         <td class="mdl-data-table__cell--non-numeric">
                             <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
+                                    <input class="mdl-textfield__input" type="text" readonly="readonly"
                                            value="$TrueCyst.A2">
                                 </div>
                             </form>
@@ -63,7 +73,7 @@
                         <td class="mdl-data-table__cell--non-numeric">
                             <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
+                                    <input class="mdl-textfield__input" type="text" readonly="readonly"
                                            value="$TrueCyst.A3">
                                 </div>
                             </form>
@@ -72,7 +82,7 @@
                         <td class="mdl-data-table__cell--non-numeric">
                             <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
+                                    <input class="mdl-textfield__input" type="text" readonly="readonly"
                                            value="$TrueCyst.A4">
                                 </div>
                             </form>
