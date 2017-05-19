@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #include("/public/template/include_head.html")
+    <style>
+        #table{
+        display:inline-block;
+        vertical-align: top;
+        text-align-last: center;
+        }
+    </style>
+    <title>Таблица пациентов с ложными кистами</title>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+    #include("public/template/include_navigation.html")
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div>
+            <div class="page-content">
+
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="table">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Инициалы</th>
+                        <th class="mdl-data-table__cell--non-numeric">А1</th>
+                        <th class="mdl-data-table__cell--non-numeric">А2</th>
+                        <th class="mdl-data-table__cell--non-numeric">А3</th>
+                        <th class="mdl-data-table__cell--non-numeric">А4</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    #foreach($falseCyst in $falseCystList)
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <div class="mdl-textfield mdl-textfield--expandable mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                           value="$falseCyst.pacient">
+                                </div>
+                            </form>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <div class="mdl-textfield--expandable mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                           value="$falseCyst.A1">
+                                </div>
+                            </form>
+                        </td>
+
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <div class="mdl-textfield--expandable mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                           value="$falseCyst.A2">
+                                </div>
+                            </form>
+                        </td>
+
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <div class="mdl-textfield--expandable mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                           value="$falseCyst.A3">
+                                </div>
+                            </form>
+                        </td>
+
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <div class="mdl-textfield--expandable mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                           value="$falseCyst.A4">
+                                </div>
+                            </form>
+                        </td>
+
+
+                    </tr>
+                    #end
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

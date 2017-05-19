@@ -27,11 +27,6 @@ public class Application {
 //        port(port);
         try {
             Factory.getInstance().getUsersDAO().addUser(new Users("admin", "admin", "root"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-
             Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Антипова", 4.68, 5.9, 6.94, 0.29));
             Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Корезина", 3.56, 4.66, 5.45, 1.08));
             Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst("Одиноков", 0.83, 0.36, 0.54, 1.77));
@@ -43,9 +38,10 @@ public class Application {
             Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Кисляков", 6.05, 0.26, 0.066, 3.19));
             Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Добин", 9.24, 0.35, 0.063, 4.57));
             Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst("Смирнов1", 5.9, 1.06, 0.4, 4.2));
-        } catch(Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+
 //        for (int i=0;i<2;i++){
 //            for (int j=0;j<9;j++){
 //                System.out.println(mas[i][j]);

@@ -2,6 +2,7 @@ package controller.site.admin;
 
 import com.google.gson.Gson;
 import controller.BaseRoutes;
+import controller.logic.Api;
 import controller.site.admin.api.*;
 import dao.Factory;
 import model.*;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static spark.Spark.*;
@@ -76,6 +78,14 @@ public class AdministrationRoutes extends BaseRoutes {
 
         get(ROOT + "BayesMethodCalculation", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "/public/admin/baies.html");
+        }, new VelocityTemplateEngine());
+
+        get(ROOT + "trueCystList", (request, response) -> {
+            return new ModelAndView(Api.getHashMapObjects(TrueCyst.class), "/public/admin/trueCystList.html");
+        }, new VelocityTemplateEngine());
+
+        get(ROOT + "falseCystList", (request, response) -> {
+            return new ModelAndView(Api.getHashMapObjects(falseCyst.class), "/public/admin/falseCystList.html");
         }, new VelocityTemplateEngine());
 
         get(ROOT+"getresult", (request, response) -> {
