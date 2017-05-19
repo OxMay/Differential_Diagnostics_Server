@@ -27,6 +27,8 @@ public class AdministrationRoutes extends BaseRoutes {
     private final String ROOT = "/admin/";
 
     private void initRoutes(){
+        new TrueCystApi();
+        new FalseCystApi();
     }
 
     @Override

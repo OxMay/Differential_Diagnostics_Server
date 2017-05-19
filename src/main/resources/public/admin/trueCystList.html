@@ -32,44 +32,47 @@
                         #foreach($TrueCyst in $TrueCystList)
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric">
-                                <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                     <div class="mdl-textfield mdl-textfield--expandable mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text"
+                                        <input class="mdl-textfield__input" type="text" name="pacient_name"
                                                value="$TrueCyst.pacient">
+
                                     </div>
+                                    <input class="mdl-button mdl-js-button mdl-button--colored" type="submit"
+                                           value="delete">
                                 </form>
                             </td>
                             <td class="mdl-data-table__cell--non-numeric">
-                                        <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                                        <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                             <div class="mdl-textfield--expandable mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="text"
+                                                <input class="mdl-textfield__input" type="text" name="pacient_name"
                                                        value="$TrueCyst.A1">
                                     </div>
                                 </form>
                             </td>
 
                         <td class="mdl-data-table__cell--non-numeric">
-                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                            <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text"
+                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
                                            value="$TrueCyst.A2">
                                 </div>
                             </form>
                         </td>
 
                         <td class="mdl-data-table__cell--non-numeric">
-                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                            <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text"
+                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
                                            value="$TrueCyst.A3">
                                 </div>
                             </form>
                         </td>
 
                         <td class="mdl-data-table__cell--non-numeric">
-                            <form action="api/discipline.delete" accept-charset="UTF-8" method="POST">
+                            <form action="/admin/api/pacient.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text"
+                                    <input class="mdl-textfield__input" type="text" name="pacient_name"
                                            value="$TrueCyst.A4">
                                 </div>
                             </form>

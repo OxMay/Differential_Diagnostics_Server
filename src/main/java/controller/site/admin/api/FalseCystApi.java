@@ -14,11 +14,12 @@ import java.util.logging.Logger;
 
 
 import model.TrueCyst;
+import model.falseCyst;
 
 
 import static spark.Spark.*;
 
-public class TrueCystApi extends BaseRoutes {
+public class FalseCystApi extends BaseRoutes {
     private static Logger log = Logger.getLogger(TrueCystApi.class.getName());
 
     private final String ROOT = "/admin/api/";
@@ -27,11 +28,11 @@ public class TrueCystApi extends BaseRoutes {
     public void routes() {
 
 
-        post(ROOT + "pacient.delete", (request, response) -> {
+        post(ROOT + "pacientfalse.delete", (request, response) -> {
             try{
-                response.redirect(ROOT.substring(0,7) + "trueCystList");
+                response.redirect(ROOT.substring(0,7) + "falseCystList");
                 return Factory.getInstance().getGenericRepositoryInterface().removeObject(
-                        Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getObject("pacient",request.queryParams("pacient_name")));
+                        Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("pacient",request.queryParams("pacient_name")));
             }catch (Exception e){
                 log.log(Level.SEVERE, "Exception: ", e);
                 return e;
