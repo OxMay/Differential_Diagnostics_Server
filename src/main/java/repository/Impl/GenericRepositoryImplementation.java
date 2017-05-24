@@ -1,14 +1,11 @@
-package dao.Impl;
+package repository.Impl;
 
-import dao.GenericRepositoryInterface;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
+import repository.GenericRepositoryInterface;
 import utils.EMF;
 
 import javax.persistence.*;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import controller.BaseRoutes;
 import controller.logic.Api;
 import controller.site.admin.api.*;
-import dao.Factory;
+import repository.Factory;
 import model.*;
 import model.site.Query;
 import spark.ModelAndView;
@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Logger;
 
 import static spark.Spark.*;

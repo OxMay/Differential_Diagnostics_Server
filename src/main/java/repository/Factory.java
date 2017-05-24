@@ -1,6 +1,6 @@
-package dao;
+package repository;
 
-import dao.Impl.*;
+import repository.Impl.*;
 
 public class Factory {
     private static UsersDAO usersDAO = null;

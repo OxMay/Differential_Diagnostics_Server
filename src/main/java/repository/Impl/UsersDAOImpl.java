@@ -1,8 +1,8 @@
-package dao.Impl;
+package repository.Impl;
 
 import com.google.gson.Gson;
-import dao.Factory;
-import dao.UsersDAO;
+import repository.Factory;
+import repository.UsersDAO;
 import model.Users;
 import utils.EMF;
 import utils.HashWithSalt;
@@ -11,9 +11,7 @@ import javax.persistence.NoResultException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UsersDAOImpl extends EMF implements UsersDAO  {
 

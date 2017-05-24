@@ -1,15 +1,11 @@
 package utils;
 
 import spark.utils.IOUtils;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by Lantiets on 29.03.2017.
- */
 public class StreamUtil {
     //Переменные характеризующие название файла
     public static final String PREFIX = "stream2file";
@@ -26,3 +22,5 @@ public class StreamUtil {
         return tempFile;
     }
 }
+
+

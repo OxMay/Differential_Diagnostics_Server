@@ -1,7 +1,6 @@
 package controller.site.admin.api;
-
 import controller.BaseRoutes;
-import dao.Factory;
+import repository.Factory;
 
 
 import java.util.logging.Level;
@@ -17,16 +16,11 @@ import model.TrueCyst;
 
 
 import static spark.Spark.*;
-
 public class TrueCystApi extends BaseRoutes {
     private static Logger log = Logger.getLogger(TrueCystApi.class.getName());
-
     private final String ROOT = "/admin/api/";
-
     @Override
     public void routes() {
-
-
         post(ROOT + "pacient.delete", (request, response) -> {
             try{
                 response.redirect(ROOT.substring(0,7) + "trueCystList");
@@ -39,3 +33,4 @@ public class TrueCystApi extends BaseRoutes {
         });
     }
 }
+

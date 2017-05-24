@@ -1,6 +1,6 @@
 package utils;
 
-import dao.Factory;
+import repository.Factory;
 import model.TrueCyst;
 import model.falseCyst;
 

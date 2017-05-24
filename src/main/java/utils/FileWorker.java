@@ -1,12 +1,5 @@
 package utils;
-
 import java.io.*;
-
-/**
- * Created by Lantiets on 29.03.2017.
- */
-
-
 public class FileWorker {
     public static String read(File file) throws FileNotFoundException {
         //Специальный объект для построения строки
@@ -32,3 +25,5 @@ public class FileWorker {
         return sb.toString();
     }
 }
+
+

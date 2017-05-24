@@ -3,47 +3,6 @@
     <head>
         #include("/public/template/include_head.html")
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-        <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'date');
-      data.addColumn('number', 'close');
-
-      var mas = document.getElementById("viewJson").value;
-      var str = JSON.parse(mas);
-      console.log(str);
-      var date = str.date;
-      var close = str.close;
-      console.log(date);
-      console.log(close);
-
-        data.addRows(str);
-
-
-        <!--for(i = 1; i > date.length; i++){-->
-
-            <!--data.addRows([date[i], close[i]]);-->
-
-        <!--}-->
-
-     var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-
-       var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
         <style>
             .thumbnails{
             /* Компенсируем отступы между float-блоками, чтобы они занимали все доступное пространство */
@@ -126,34 +85,15 @@ vertical-align: middle;
 width:160px;
 }
 
-            body {
-            font: 10px sans-serif;
-            }
-
-            .axis path,
-            .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-            }
-
-            .line {
-            fill: none;
-            stroke: steelblue;
-            stroke-width: 1.5px;
-            }
-
-            .dot {
-            fill: white;
-            stroke: steelblue;
-            stroke-width: 1.5px;
+            dis{
+            display: none;
             }
         </style>
         <title>Расчет показателей работы</title>
     </head>
     <body>
 
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
 
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
             #include("public/template/include_navigation.html")
@@ -198,15 +138,26 @@ width:160px;
                 </div>
                         </ins>
                     </div>
-                <option id="viewJson">$mas</option>
+                <br>
 
-                    <svg width="960" height="500"></svg>
-                    <!--<script src="../js/downloadGraphics.js"></script>-->
+                <div class="thumbnails">
+                    <ins class="thumbnail">
+
+                                    <div class="mdl-layout__content mdl-color--grey-100" id="curve_chart" style="width: 900px; height: 600px"></div>
+
+                        </ins>
+                    </div>
+
+
+
+
+                    <script src="../js/downloadGraphics.js"></script>
                 </main>
 
 
 
           <script src="../js/overview.js"></script>
        </div>
+        <option  class = "dis" id="viewJson">$mas</option>
     </body>
 </html>
