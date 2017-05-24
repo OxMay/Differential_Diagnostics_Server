@@ -1,11 +1,13 @@
 package controller.site.admin;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import controller.BaseRoutes;
 import controller.logic.Api;
 import controller.site.admin.api.*;
 import dao.Factory;
 import model.*;
+import model.site.Query;
 import spark.ModelAndView;
 import utils.*;
 import utils.template.VelocityTemplateEngine;
@@ -165,13 +167,28 @@ public class AdministrationRoutes extends BaseRoutes {
                 File file = StreamUtil.stream2file(is);
                 String strFromFile = FileWorker.read(file);
                 Double[][] massive = ParseString.read(strFromFile);
+                ArrayList<Double> date = new ArrayList<Double>();
+                ArrayList<Double> close = new ArrayList<Double>();
+                for(int i = 0; i < massive.length; i++){
+                    date.add(massive[i][0]);
+                    close.add(massive[i][1]);
+                }
+
+
                 Double A2 = CalculationA2.calcA2(massive);
                 Double A1 = CalculationA1.calcA1(massive);
                 Double A3 = CalculationA3.calcA3(massive);
                 Double A4 = CalculationA4.calcA4(massive);
-                Gson gson = new Gson();
+
+                Query query = new Query(date,close);
+
+                Gson gson = new GsonBuilder().create();
                 String json = gson.toJson(massive);
+
+
+
                 model.put("mas",json);
+
                 model.put("get","Файл загружен");
                 request.session().attribute("one", A1);
                 request.session().attribute("two", A2);

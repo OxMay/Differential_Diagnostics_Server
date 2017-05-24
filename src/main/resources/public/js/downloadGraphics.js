@@ -4,8 +4,11 @@
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    var input = d3.select("input"),
-    value = input.attr("value");
+    var text = document.getElementById("viewJson").value;
+    console.log(text);
+
+
+
 
 //var parseTime = d3.timeParse("%d-%b-%y");
 
@@ -19,12 +22,12 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-d3.json(value, function(d) {
-  d.date = +d.date;
-  d.close = +d.close;
-  return d;
-}, function(error, data) {
-  if (error) throw error;
+d3.values(text,  function(d) {
+                  d.date = +d.date;
+                  d.close = +d.close;
+                  return d;
+                }, function(error, data) {
+                  if (error) throw error;
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain(d3.extent(data, function(d) { return d.close; }));
@@ -38,7 +41,7 @@ d3.json(value, function(d) {
       .attr("y", -6)
       .style("text-anchor", "end")
       .text("Sepal Width (cm)");
-    
+
   g.append("g")
       .call(d3.axisLeft(y))
     .append("text")

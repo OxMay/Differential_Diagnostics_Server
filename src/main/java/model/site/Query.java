@@ -1,67 +1,29 @@
 package model.site;
 
+import java.util.ArrayList;
+
 public class Query {
-    private String weekDay;
-    private String lessonTime;
-    private String lectureHall;
-    private String teacher;
-    private String discipline;
-    private String employmentType;
+    private ArrayList<Double> date;
+    private ArrayList<Double> close;
 
-    public Query(String weekDay, String lessonTime, String lectureHall, String teacher, String discipline, String employmentType) {
-        this.weekDay = weekDay;
-        this.lessonTime = lessonTime;
-        this.lectureHall = lectureHall;
-        this.teacher = teacher;
-        this.discipline = discipline;
-        this.employmentType = employmentType;
+    public Query(ArrayList<Double> date, ArrayList<Double> close) {
+        this.date = date;
+        this.close = close;
     }
 
-    public String getWeekDay() {
-        return weekDay;
+    public ArrayList<Double> getDate() {
+        return date;
     }
 
-    public void setWeekDay(String weekDay) {
-        this.weekDay = weekDay;
+    public void setDate(ArrayList<Double> date) {
+        this.date = date;
     }
 
-    public String getLessonTime() {
-        return lessonTime;
+    public ArrayList<Double> getClose() {
+        return close;
     }
 
-    public void setLessonTime(String lessonTime) {
-        this.lessonTime = lessonTime;
-    }
-
-    public String getLectureHall() {
-        return lectureHall;
-    }
-
-    public void setLectureHall(String lectureHall) {
-        this.lectureHall = lectureHall;
-    }
-
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
-    }
-
-    public String getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(String discipline) {
-        this.discipline = discipline;
-    }
-
-    public String getEmploymentType() {
-        return employmentType;
-    }
-
-    public void setEmploymentType(String employmentType) {
-        this.employmentType = employmentType;
+    public void setClose(ArrayList<Double> close) {
+        this.close = close;
     }
 }
