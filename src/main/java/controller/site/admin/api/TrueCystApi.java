@@ -1,20 +1,9 @@
 package controller.site.admin.api;
 import controller.BaseRoutes;
 import repository.Factory;
-
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- * Created by Lantiets on 12.05.2017.
- */
-
-
-
 import model.TrueCyst;
-
-
 import static spark.Spark.*;
 public class TrueCystApi extends BaseRoutes {
     private static Logger log = Logger.getLogger(TrueCystApi.class.getName());

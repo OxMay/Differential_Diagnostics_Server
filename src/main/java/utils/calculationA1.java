@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 31.03.2017.
- */
 public class CalculationA1 {
     public static double calcA1(Double[][] array) throws FileNotFoundException {
         //Нахождение максимального индекса
@@ -18,3 +13,5 @@ public class CalculationA1 {
         return A1;
     }
 }
+
+

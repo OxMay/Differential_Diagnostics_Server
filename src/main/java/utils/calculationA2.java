@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 31.03.2017.
- */
 public class CalculationA2 {
     public static double calcA2(Double[][] array) throws FileNotFoundException {
         //Находим максимальную точку
@@ -20,3 +15,5 @@ public class CalculationA2 {
         return A2;
     }
 }
+
+

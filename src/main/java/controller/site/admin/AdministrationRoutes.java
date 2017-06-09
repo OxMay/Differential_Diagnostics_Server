@@ -103,11 +103,11 @@ public class AdministrationRoutes extends BaseRoutes {
 
             if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
                 double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
-                model.put("A5","Внутрипротоковая киста");
+                model.put("A5","Постнекротическая псевдокиста, сообщающаяся с протоком");
                 model.put("inside",sum1*100);
             }else {
                 double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
-                model.put("A5","Внепротоковая киста");
+                model.put("A5","Постнекротическая псевдокиста, не сообщающаяся с протоком");
                 model.put("inside",sum2*100);
             }
             model.put("A1", as1);
@@ -138,12 +138,12 @@ public class AdministrationRoutes extends BaseRoutes {
                 ArrayList<Double> comparisonOfVariables = CalculationMethodBaies.procent(border,as1,as2,as3,as4,mas);
                 if(comparisonOfVariables.get(0)>comparisonOfVariables.get(1)){
                     double sum1 = comparisonOfVariables.get(0)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
-                    model.put("A5","Внутрипротоковая киста");
+                    model.put("A5","Постнекротическая псевдокиста, сообщающаяся с протоком");
                     model.put("inside",sum1*100);
                     Factory.getInstance().getGenericRepositoryInterface().addObject(new TrueCyst(strFromFile,as1,as2,as3,as4));
                 }else {
                     double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
-                    model.put("A5","Внепротоковая киста");
+                    model.put("A5","Постнекротическая псевдокиста, не сообщающаяся с протоком");
                     model.put("inside",sum2*100);
                     Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst(strFromFile,as1,as2,as3,as4));
                 }

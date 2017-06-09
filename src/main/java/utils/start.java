@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 31.03.2017.
- */
 public class Start {
     //Принятие двумерного массива
     public static double start(Double [][] array) throws FileNotFoundException {
@@ -26,3 +21,5 @@ public class Start {
         return start_index;
     }
 }
+
+

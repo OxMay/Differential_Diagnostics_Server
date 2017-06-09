@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 31.03.2017.
- */
 public class Maximum {
     // Принимает файл двумерного массива
         public static double max(Double [][] array) throws FileNotFoundException {
@@ -25,3 +20,4 @@ public class Maximum {
             return max_index;
         }
 }
+

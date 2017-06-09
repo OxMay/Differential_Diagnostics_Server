@@ -1,15 +1,10 @@
 package utils;
-
-import dao.Factory;
+import repository.Factory;
 import model.TrueCyst;
 import model.falseCyst;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Lantiets on 06.04.2017.
- */
 public class ModelA1 {
     public static Double[][] modelA1( ArrayList<Double> arrayList){
         //ПОЛУЧЕНИЕ ГРАНИЦ ДЛЯ ВСЕХ А

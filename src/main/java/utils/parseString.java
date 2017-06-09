@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 30.03.2017.
- */
 public class ParseString {
     public static Double[][] read(String string) throws FileNotFoundException {
         //Заменяем запятые на точки в строке
@@ -36,3 +31,4 @@ public class ParseString {
         return mas2;
     };
 }
+

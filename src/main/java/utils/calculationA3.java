@@ -1,10 +1,5 @@
 package utils;
-
 import java.io.FileNotFoundException;
-
-/**
- * Created by Lantiets on 01.04.2017.
- */
 public class CalculationA3 {
     public static double calcA3(Double[][] array) throws FileNotFoundException {
         //Нахождение точки начала графика
@@ -18,3 +13,5 @@ public class CalculationA3 {
         return A3;
     }
 }
+
+
