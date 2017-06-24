@@ -5,18 +5,19 @@
 
     <persistence-unit name="d9766e7c3hhuab" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
         <class>model.FalseCyst</class>
         <class>model.TrueCyst</class>
         <class>model.Users</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgres://fgxwpetotydycx:5165efb5642d3d33076e0847e1fab6b52275c9d2b7c31ef0654bc6e2d6b1fa5f@ec2-54-75-231-195.eu-west-1.compute.amazonaws.com:5432/d9766e7c3hhuab?user=fgxwpetotydycx&amp;password=5165efb5642d3d33076e0847e1fab6b52275c9d2b7c31ef0654bc6e2d6b1fa5f"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-46-137-125-22.eu-west-1.compute.amazonaws.com:5432/d4nm03ep7uplmc?user=fgxwpetotydycx&amp;password=5165efb5642d3d33076e0847e1fab6b52275c9d2b7c31ef0654bc6e2d6b1fa5f"/>
             <property name="javax.persistence.jdbc.user" value="fgxwpetotydycx"/>
             <property name="javax.persistence.jdbc.password" value="5165efb5642d3d33076e0847e1fab6b52275c9d2b7c31ef0654bc6e2d6b1fa5f"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 
