@@ -18,9 +18,9 @@ public class Application {
         staticFileLocation("/public");
 
         int port;
-        port(5555);
-//        port = Integer.parseInt(args[0]);
-//        port(port);
+//        port(5555);
+        port = Integer.parseInt(args[0]);
+        port(port);
         try {
 
             if(Factory.getInstance().getGenericRepositoryInterface(Users.class).getObject("login","admin")==null){
