@@ -1,14 +1,14 @@
 package utils;
+import model.FalseCyst;
 import repository.Factory;
 import model.TrueCyst;
-import model.falseCyst;
 
 import java.util.ArrayList;
 import java.util.List;
 public class ModelA1 {
     public static Double[][] modelA1( ArrayList<Double> arrayList){
         //ПОЛУЧЕНИЕ ГРАНИЦ ДЛЯ ВСЕХ А
-        List<falseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getAllObjects();
+        List<FalseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(FalseCyst.class).getAllObjects();
         List<TrueCyst> trueCystList = Factory.getInstance().getGenericRepositoryInterface(TrueCyst.class).getAllObjects();
         //Получение количества пациентов
         int size1=falseCystList.size();
@@ -26,7 +26,7 @@ public class ModelA1 {
         int countA4if = 0;
         int countA4else = 0;
         //Производим расчет количества пациентов для каждого признака
-        for (falseCyst workF: falseCystList){
+        for (FalseCyst workF: falseCystList){
             if(workF.getA1() > arrayList.get(0)){
                 countA1if++;
             }else{
