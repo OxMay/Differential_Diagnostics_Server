@@ -3,7 +3,7 @@ import controller.BaseRoutes;
 import repository.Factory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.falseCyst;
+import model.FalseCyst;
 import static spark.Spark.*;
 public class FalseCystApi extends BaseRoutes {
     private static Logger log = Logger.getLogger(TrueCystApi.class.getName());
@@ -14,7 +14,7 @@ public class FalseCystApi extends BaseRoutes {
             try{
                 response.redirect(ROOT.substring(0,7) + "falseCystList");
                 return Factory.getInstance().getGenericRepositoryInterface().removeObject(
-                        Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getObject("usersId",request.queryParams("users_Id")));
+                        Factory.getInstance().getGenericRepositoryInterface(FalseCyst.class).getObject("usersId",request.queryParams("users_Id")));
             }catch (Exception e){
                 log.log(Level.SEVERE, "Exception: ", e);
                 return e;

@@ -1,8 +1,8 @@
 package utils;
 
+import model.FalseCyst;
 import repository.Factory;
 import model.TrueCyst;
-import model.falseCyst;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,15 @@ import java.util.List;
  */
 public class Borders {
     public static ArrayList<Double> borders(){
-        //Изъятие всех объектов из таблицы falseCyst и запись их в массив
-        List<falseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(falseCyst.class).getAllObjects();
+        //Изъятие всех объектов из таблицы FalseCyst и запись их в массив
+        List<FalseCyst> falseCystList = Factory.getInstance().getGenericRepositoryInterface(FalseCyst.class).getAllObjects();
         //инициализация новых переменных
         double sumA1 = 0;
         double sumA2 = 0;
         double sumA3 = 0;
         double sumA4 = 0;
         //Цикл, производящий суммацию всех показателей работ для  таблицы
-        for (falseCyst falsec: falseCystList){
+        for (FalseCyst falsec: falseCystList){
             sumA1 += falsec.getA1();
             sumA2 += falsec.getA2();
             sumA3 += falsec.getA3();

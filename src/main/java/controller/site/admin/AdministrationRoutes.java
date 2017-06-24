@@ -88,7 +88,7 @@ public class AdministrationRoutes extends BaseRoutes {
         }, new VelocityTemplateEngine());
 
         get(ROOT + "falseCystList", (request, response) -> {
-            return new ModelAndView(Api.getHashMapObjects(falseCyst.class), "/public/admin/falseCystList.html");
+            return new ModelAndView(Api.getHashMapObjects(FalseCyst.class), "/public/admin/falseCystList.html");
         }, new VelocityTemplateEngine());
 
         get(ROOT+"getresult", (request, response) -> {
@@ -145,7 +145,7 @@ public class AdministrationRoutes extends BaseRoutes {
                     double sum2 = comparisonOfVariables.get(1)/(comparisonOfVariables.get(0)+comparisonOfVariables.get(1));
                     model.put("A5","не сообщается с протоком");
                     model.put("inside",sum2*100);
-                    Factory.getInstance().getGenericRepositoryInterface().addObject(new falseCyst(strFromFile,as1,as2,as3,as4));
+                    Factory.getInstance().getGenericRepositoryInterface().addObject(new FalseCyst(strFromFile,as1,as2,as3,as4));
                 }
                 model.put("A1", as1);
                 model.put("A2", as2);

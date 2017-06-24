@@ -5,7 +5,7 @@
 
     <persistence-unit name="d9766e7c3hhuab" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>model.falseCyst</class>
+        <class>model.FalseCyst</class>
         <class>model.TrueCyst</class>
         <class>model.Users</class>
 
@@ -23,7 +23,7 @@
     <persistence-unit name="med_db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>model.falseCyst</class>
+        <class>model.FalseCyst</class>
         <class>model.TrueCyst</class>
         <class>model.Users</class>
 
