@@ -3,6 +3,7 @@ package controller.site;
 import controller.BaseRoutes;
 import controller.site.api.UsersApi;
 import spark.ModelAndView;
+import spark.Spark;
 import utils.template.VelocityTemplateEngine;
 
 import java.util.HashMap;
@@ -26,8 +27,10 @@ public class SiteRoutes extends BaseRoutes {
     @Override
     public void routes() {
         initRoutes();
-
-//
+      get(ROOT, (request, response) -> {
+          response.redirect(ROOT+"admin/");
+        return null;
+        });
 
         get(ROOT+"authorization", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
