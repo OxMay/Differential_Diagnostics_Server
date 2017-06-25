@@ -30,13 +30,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    #foreach($falseCyst in $falseCystList)
+                    #foreach($FalseCyst in $FalseCystList)
                     <tr>
                         <td class="mdl-data-table__cell--non-numeric">
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly" name="users_Id"
-                                           value="$falseCyst.usersId">
+                                           value="$FalseCyst.usersId">
                                 </div>
                                 <input class="mdl-button mdl-js-button mdl-button--colored" type="submit"
                                        value="delete">
@@ -46,7 +46,7 @@
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly"
-                                           value="$falseCyst.pacient">
+                                           value="$FalseCyst.pacient">
                                 </div>
 
                             </form>
@@ -55,7 +55,7 @@
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly"
-                                           value="$falseCyst.A1">
+                                           value="$FalseCyst.A1">
                                 </div>
                             </form>
                         </td>
@@ -64,7 +64,7 @@
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly"
-                                           value="$falseCyst.A2">
+                                           value="$FalseCyst.A2">
                                 </div>
                             </form>
                         </td>
@@ -73,7 +73,7 @@
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly"
-                                           value="$falseCyst.A3">
+                                           value="$FalseCyst.A3">
                                 </div>
                             </form>
                         </td>
@@ -82,7 +82,7 @@
                             <form action="/admin/api/pacientfalse.delete" accept-charset="UTF-8" method="POST">
                                 <div class="mdl-textfield--expandable mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" readonly="readonly"
-                                           value="$falseCyst.A4">
+                                           value="$FalseCyst.A4">
                                 </div>
                             </form>
                         </td>
